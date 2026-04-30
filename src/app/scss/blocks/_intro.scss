@@ -1,0 +1,262 @@
+@use "../global/variables" as *;
+@use "../global/antd-reset" as *;
+@use "../global/mixins" as *;
+
+.intro {
+  padding: 32px 0 0;
+  margin: 0;
+
+  @include vp-1023 {
+    padding: 0;
+  }
+
+  @include vp-767 {
+    padding: 0;
+    margin: 0 0 24px;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 680px;
+    align-items: stretch;
+
+    @include vp-1023 {
+      display: flex;
+      width: 100%;
+      flex-direction: column-reverse;
+      gap: 24px;
+      max-height: none;
+      padding: 0;
+    }
+
+    @include vp-767 {
+      display: flex;
+      width: 100%;
+      flex-direction: column-reverse;
+      align-items: stretch;
+      gap: 24px;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    padding: 74px 0 122px;
+    gap: 16px;
+    margin: 0 25px 0 0;
+
+    @include vp-1023 {
+      padding: 0;
+    }
+
+    @include vp-767 {
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+    }
+
+    &-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    &-runtime,
+    &-genre,
+    &-year,
+    &-runtime strong {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      color: rgba($white, 0.7);
+      font-family: $ff-play;
+
+      @include vp-767 {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    &-genre {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; // Добавляем то самое "..."
+      display: block;
+      max-width: 120px;
+
+      @include vp-767 {
+        max-width: auto;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    &-title {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 56px;
+
+      @include vp-767 {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+
+    &-text {
+      color: rgba($white, 0.7);
+      font-size: 24px;
+      line-height: 32px;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0 0 44px;
+
+      @include vp-767 {
+        width: 335px;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 0 0 20px;
+      }
+    }
+
+    &-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+
+      @include vp-767 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .btn,
+      .ant-btn {
+        position: relative !important;
+        z-index: 99 !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .intro__film-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        white-space: nowrap;
+        cursor: pointer;
+        padding: 15px 47px;
+        border-color: transparent;
+
+        @include vp-767 {
+          padding: 15px 0;
+        }
+      }
+
+      .intro__thriller-btn {
+        padding: 26px 48px;
+        @include vp-767 {
+          grid-column: 1/4;
+          grid-row: 1/2;
+        }
+      }
+
+      .intro__favorites-btn,
+      .intro__update-btn {
+        border: 1px solid rgba($black, 0.4);
+        height: 100%;
+        background-color: $night-rider;
+        padding: 16px 22px !important;
+
+        width: 68px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        &.ant-btn-loading {
+          opacity: 0.8;
+        }
+      }
+      .intro__favorites-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .intro__favorites-icon {
+        position: absolute;
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
+        pointer-events: none;
+
+        &.is-hidden {
+          opacity: 0;
+          transform: scale(0);
+          pointer-events: none;
+        }
+
+        &.is-visible {
+          opacity: 1;
+          transform: scale(1);
+        }
+
+        &.isActive {
+          pointer-events: none;
+          color: $perano;
+        }
+      }
+
+      .is-hidden {
+        visibility: hidden;
+      }
+
+      .is-visible {
+        visibility: visible;
+      }
+    }
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: $forest-green;
+    border-radius: 16px;
+    padding: 4px 12px;
+
+    &--high {
+      background-color: $forest-green; 
+    }
+
+    &--medium {
+      background-color: $lucky;
+    }
+
+    &--neutral {
+      background-color: $grey;
+    }
+
+    &--low {
+      background-color: $fire-brick;
+    }
+
+    &-text {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24px;
+      color: $white;
+    }
+  }
+
+  &__image {
+    border-radius: 16px;
+  }
+}

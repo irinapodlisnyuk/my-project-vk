@@ -1,0 +1,43 @@
+@use "../../global/variables" as *;
+@use "../../global/mixins" as *;
+
+.movie__card {
+  display: flex;
+  border-radius: 16px;
+  width: 224px;
+  height: 336px;
+  border: 1px solid rgba($white, 0.4);
+  position: relative;
+  box-shadow: 0px 0px 80px 0px rgba($white, 0.54);
+  overflow: visible;
+  cursor: pointer;
+  transition:
+    transform $transition-800,
+    box-shadow $transition-800 !important;
+
+  @include vp-767 {
+    border: transparent;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 502px;
+
+    box-shadow: 0px 1px 10px 0px rgba($black, 0.3);
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 1px 30px 0px $perano;
+  }
+
+  &-image {
+    border-radius: 16px;
+    overflow: hidden;
+    width: 100%;
+    height: 100% !important;
+
+    @include vp-767 {
+      height: 100% !important;
+    }
+  }
+}

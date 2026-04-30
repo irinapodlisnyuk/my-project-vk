@@ -1,0 +1,47 @@
+@use "../../global/variables" as *;
+@use "../../global/mixins" as *;
+
+.ant-modal {
+  top: auto !important;
+  padding-bottom: 0 !important;
+
+
+  width: 400px !important;
+
+
+  max-width: calc(
+    100vw - 32px
+  ) !important; // Оставляет по 16px отступов от краев экрана
+  position: relative !important;
+}
+
+.auth-modal-custom {
+  .ant-modal-close {
+    position: absolute;
+    width: 48px !important;
+    height: 48px !important;
+    color: $black !important;
+    background-color: $white !important;
+    border-radius: 50% !important;
+
+    @media (min-width: 768px) {
+      top: -205px !important;
+      right: -100px !important;
+    }
+
+    
+    @media (max-width: 767px) {
+      top: 10px !important;
+      right: 10px !important;
+      background-color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    &:hover {
+      color: $cornflower-blue !important;
+    }
+
+    .ant-modal-close-x {
+      font-size: 20px;
+    }
+  }
+}

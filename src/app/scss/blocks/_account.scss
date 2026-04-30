@@ -1,0 +1,139 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.account {
+  padding: 64px 0 0;
+  @include vp-767 {
+    padding: 16px 0 0;
+  }
+
+  &__user-btn {
+    position: relative;
+    padding: 0 !important;
+    font-family: "Play";
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    color: $white !important;
+    transition: color $transition-800;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      width: 0%;
+      height: 3px;
+      background-color: $white;
+      transform: translateX(-50%);
+      transition:
+        width $transition-800,
+        background-color $transition-800;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      color: rgba($white, 0.5) !important;
+      &::after {
+        width: 100% !important;
+        background-color: rgba($white, 0.5);
+      }
+    }
+
+    &--active {
+      color: $white;
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: $heliotrope;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    margin: 0 0 64px;
+
+    @include vp-767 {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+      margin: 0 0 40px;
+    }
+  }
+
+  &__info-list {
+    display: flex;
+    gap: 64px;
+    margin: 0 0 64px;
+
+    @include vp-767 {
+      gap: 24px;
+      margin: 0 0 40px !important;
+      justify-content: space-between;
+    }
+  }
+
+  &__favorites-btn,
+  &__settings-btn {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__favorites-btn--active,
+  &__settings-btn--active {
+    color: $white;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: $heliotrope;
+    }
+  }
+
+  &__info-label {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  &__info-label-mobile {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    display: none;
+
+    @include vp-767 {
+      display: block;
+    }
+  }
+
+  &__favorites-content {
+    margin: 100px 0;
+    @include vp-767 {
+      margin: 0 0 152px;
+    }
+  }
+}

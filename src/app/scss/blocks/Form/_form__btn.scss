@@ -1,0 +1,41 @@
+@use "../../global/variables" as *;
+@use "../../global/mixins" as *;
+
+.form__btn {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 16px 24px;
+  background-color: $cornflower-blue;
+  outline: none;
+  border: 0;
+  border-radius: 28px;
+  color: $white;
+  cursor: pointer;
+  transition:
+    background-color $transition-800,
+    color $transition-800;
+
+  &:hover,
+  &:focus {
+    background-color: $east-bay;
+    color: rgba($white, 0.5);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.form__btn:disabled {
+  opacity: 0.5;
+}
+
+.form__btn .loader-item {
+  background-color: $white;
+}

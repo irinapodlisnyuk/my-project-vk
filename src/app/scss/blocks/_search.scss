@@ -1,0 +1,84 @@
+@use "../global/variables" as *;
+@use "../global/antd-reset" as *;
+@use "../global/mixins" as *;
+
+// Deskpop search
+// Контейнер, который внутри оверлея или хедера
+.header__search {
+  width: 100%;
+  //max-width: 656px;
+  position: relative;
+  z-index: 1001;
+  transition: color $transition-800;
+
+  &-input {
+    position: relative;
+    width: 100%;
+    display: flex;
+    z-index: 1002;
+    align-items: center;
+    cursor: text;
+
+    // У Ant Design сложная структура, заставляем её принимать клики
+    .ant-input-affix-wrapper,
+    .ant-input {
+      pointer-events: auto !important;
+      cursor: text !important;
+      z-index: 1;
+    }
+
+    pointer-events: auto !important;
+
+    .header__search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba($white, 0.5);
+      pointer-events: none !important;
+      transition: color $transition-800;
+      z-index: 2;
+    }
+
+    :where(.ant-input-affix-wrapper, .ant-input) {
+      z-index: 1;
+      width: 100% !important;
+    }
+
+    &:hover .header__search-icon {
+      color: $white;
+    }
+  }
+
+  &:hover .header__search-icon {
+    color: $white;
+  }
+
+  .header__search-close {
+    display: none;
+    @include vp-767 {
+      display: block;
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: transparent !important;
+      border: none;
+      transition: color $transition-800;
+
+      &:hover,
+      &:focus {
+        background-color: transparent !important;
+        .header__close-icon {
+          color: $white;
+        }
+      }
+
+      .header__close-icon {
+        color: rgba($white, 0.5);
+        transition: color $transition-800;
+      }
+    }
+  }
+}

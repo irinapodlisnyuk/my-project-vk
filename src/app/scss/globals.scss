@@ -1,0 +1,53 @@
+@use "tailwindcss";
+
+/* 1. Настройки и инструменты (База) */
+@use "./global/variables";
+@use "./global/mixins";
+@use "./global/fonts";
+
+/* 2. Сбросы (Нормализация) */
+@use "./global/normalize.scss";
+@use "./global/reboot";
+@use "./global/antd-reset"; // Тот самый файл с "костылями"
+
+/* 3. Утилиты и общие классы */
+@use "./global/container";
+@use "./global/visually-hidden";
+
+/* 4. Компоненты (Блоки) */
+@use "./blocks/header/header";
+@use "./blocks/header/header__mobile";
+@use "./blocks/intro";
+@use "./blocks/btn";
+@use "./blocks/movie/movie-card";
+@use "./blocks/movie/movie";
+@use "./blocks/movie/movie-top";
+@use "./blocks/footer";
+@use "./blocks/loaderPage";
+@use "./blocks/search-results";
+@use "./blocks/swiper";
+@use "./blocks/genres";
+@use "./blocks/genre";
+@use "./blocks/search";
+
+@use "./blocks/account";
+@use "./blocks/settings";
+@use "./blocks/favorites";
+@use "./blocks/favorite__card";
+
+//Form
+@use "./blocks/Form/custom_search";
+@use "./blocks/Form/formField";
+@use "./blocks/Form/authForm";
+@use "./blocks/Form/loginForm";
+@use "./blocks/Form/custom-login";
+@use "./blocks/Form/ant-modal-close";
+@use "./blocks/Form/form__btn";
+@use "./blocks/Form/registerForm";
+@use "./blocks/Form/custom__register";
+@use "./blocks/Form/success-form";
+@use "./blocks/Form/loaderForm";
+
+// Trailer
+@use "./blocks/trailer/trailerModal";
+@use "./blocks/trailer/loaderTrailer";

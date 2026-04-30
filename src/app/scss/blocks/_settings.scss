@@ -1,0 +1,73 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.settings {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 64px;
+  margin: 0 0 100px;
+
+  @include vp-767 {
+    margin: 0 0 232px;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__user,
+  &__email {
+    display: flex;
+    gap: 16px;
+
+    &-avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: rgba($white, 0.5);
+
+      @include vp-767 {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+
+  &__user-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+
+    @include vp-767 {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &__user-name {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+
+    @include vp-767 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+  &__logout {
+    @include vp-767 {
+      width: 100%;
+    }
+  }
+}

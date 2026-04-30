@@ -1,0 +1,271 @@
+@use "../../global/variables" as *;
+@use "../../global/mixins" as *;
+
+$z-modal-overlay: 1000;
+
+.trailer__modal-custom {
+  z-index: $z-modal-overlay !important;
+
+  .ant-modal-centered .ant-modal {
+    padding: 0 !important;
+  }
+
+  .ant-modal {
+    width: 100% !important;
+    max-width: 960px !important;
+    height: auto !important;
+    margin: 0 auto;
+
+    @include vp-767 {
+      margin: 0 !important;
+    }
+
+    &-container {
+      padding: 0 !important;
+    }
+
+    &-content {
+      padding: 0 !important; // Главный сброс тут
+      background-color: $montana !important;
+      overflow: visible;
+      height: 100%;
+    }
+
+    &-body {
+      padding: 0 !important; // Убираем внутренний отступ тела
+      width: 100%;
+    }
+
+    &-close {
+      width: 48px !important;
+      height: 48px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0 !important;
+      right: -72px !important;
+      background-color: $white !important;
+      border-radius: 50% !important;
+      color: $black !important;
+      padding: 14px 14px !important;
+      transition:
+        color $transition-800,
+        background-color $transition-800;
+
+      @include vp-767 {
+        width: 32px !important;
+        height: 32px !important;
+        top: 8px !important;
+        right: 8px !important;
+        padding: 10px !important;
+      }
+
+      &:hover {
+        color: $cornflower-blue;
+        background-color: rgba($white, 0.6) !important;
+      }
+
+      &-icon svg {
+        width: 19px !important;
+        height: 19px !important;
+
+        @include vp-767 {
+          width: 13px !important;
+          height: 13px !important;
+        }
+      }
+    }
+  }
+}
+
+.trailer__wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background-color: $montana;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  @include vp-767 {
+    padding-top: 0 !important; 
+    overflow: visible;
+  }
+
+  // 1. Кнопка паузы (внутри враппера)
+  .trailer__play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background: $white;
+    border-radius: 50%;
+    border: 1px solid rgba($white, 0.3);
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: background-color $transition-800;
+
+    &:hover {
+      background-color: rgba($white, 0.4);
+      
+    }
+
+    @include vp-767 {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  .trailer__pause-img {
+    @include vp-767 {
+      width: 12px;
+      height: 18px;
+    }
+  }
+
+  .trailer__play-img {
+    @include vp-767 {
+      width: 15px;
+      height: 18px;
+    }
+  }
+ 
+  &:hover {
+    .trailer__play-btn {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .trailer__info {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @include vp-767 {
+      .trailer__info {
+        max-height: 100px;
+        opacity: 1;
+        visibility: visible;
+         margin-top: 0;
+      }
+    }
+  }
+}
+
+.trailer__video-container {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  top: -20%;
+  left: -20%;
+
+  @include vp-767 {
+    position: relative; 
+    width: 100% !important;
+    padding-top: 56.25%;
+    top: 0 !important;
+    left: 0 !important;
+    overflow: hidden;
+  }
+
+  iframe,
+  .trailer__iframe-target {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
+
+    @include vp-767 {
+      position: absolute;
+      width: 140% !important; 
+      height: 140% !important;
+      top: -20% !important; 
+      left: -20% !important; 
+    }
+  }
+}
+
+.trailer__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  cursor: default;
+}
+
+.trailer__info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 21;
+
+  margin: 0 20px 24px;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($dark-green, 0.5);
+  pointer-events: none;
+  transition:
+    max-height $transition-800,
+    opacity $transition-800,
+    visibility 0.4s;
+
+  &-text {
+    padding: 24px 40px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: $white;
+    text-align: center;
+  }
+
+  @include vp-767 {
+    position: relative;
+    max-height: 0;     
+    opacity: 0;
+    visibility: hidden;
+    margin: 0;
+    width: 100%;
+    background-color: $black;
+    transition: all $transition-800; 
+    overflow: hidden;
+
+    &-text {
+      opacity: 1 !important; 
+      padding: 16px 20px;
+    }
+  }
+}
+
+.trailer__loader-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+}
+
+// Анимации Ant Design
+.ant-zoom-enter.trailer__modal-custom .ant-modal,
+.ant-zoom-appear.trailer__modal-custom .ant-modal {
+  opacity: 0;
+  transform: scale(0.9) translateY(20px) !important;
+}
+
+.ant-zoom-enter-active.trailer__modal-custom .ant-modal,
+.ant-zoom-appear-active.trailer__modal-custom .ant-modal {
+  opacity: 1;
+  transform: scale(1) translateY(0) !important;
+}

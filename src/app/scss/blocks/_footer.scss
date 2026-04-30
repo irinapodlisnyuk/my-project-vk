@@ -1,0 +1,46 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.footer {
+  padding: 0 !important;
+  background-color: #3d4163 !important;
+
+  &__wrapper {
+    padding: 40px 0;
+    @include vp-767 {
+      padding: 24px 0 !important;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: flex-end;
+
+    @include vp-767 {
+      justify-content: flex-start;
+      margin-bottom: 12px !important;
+    }
+  }
+
+  &__socials-item {
+    border-radius: 8px;
+    border: 1px solid $cream;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+      transform $transition-800,
+      opacity $transition-800;
+
+    &:hover,
+    &:focus {
+      transform: translateY(-5px);
+      opacity: 0.6;
+    }
+  }
+}

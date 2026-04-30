@@ -1,0 +1,111 @@
+@use "./variables" as *;
+@use "./antd-reset" as *;
+@use "../global/mixins" as *;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  color: $white;
+  font-family: $ff-play;
+  overflow-x: hidden;
+  background:
+    linear-gradient(178deg, #0c264beb -17.53%, #6414002e 131.74%),
+    linear-gradient(#000 0%, #001254b5 100%) !important;
+}
+
+.root-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative; // Добавь это для корректного позиционирования кнопок
+
+  main {
+    flex: 1 0 auto; // Контент растягивается, прижимая футер
+    padding-top: 96px;
+
+    @include vp-1023 {
+      padding-top: 120px;
+    }
+
+    @include vp-767 {
+      padding-top: 56px;
+    }
+  }
+}
+
+// Поправь lock-scroll для мобилок
+body.lock-scroll {
+  max-width: 100%;
+  overflow: hidden !important;
+  touch-action: none;
+}
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 40px 0;
+}
+
+// 1. Принудительно включаем клики на интерактивных элементах
+.header__search-btn,
+.header__login-btn,
+.account__user-btn,
+.intro__favorites-btn,
+.custom__search-mobile,
+input[type="text"] {
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+
+// 2. Исключаем перехват кликов мелкими иконками внутри кнопок
+.header__search-btn *,
+.header__login-btn *,
+.account__user-btn *,
+.intro__favorites-btn * {
+  pointer-events: none !important;
+}
+
+// 3. Отключаем задержку тапа в 300мс на мобилках
+button,
+input,
+a {
+  touch-action: manipulation !important;
+}

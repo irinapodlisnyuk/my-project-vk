@@ -1,0 +1,106 @@
+
+  // @use "variables" as *;
+
+  // // 1. ГЛОБАЛЬНЫЙ СБРОС (Layout, Header, Menu)
+  // :where(
+  //   .ant-layout,
+  //   .ant-layout-header,
+  //   .ant-layout-content,
+  //   .ant-layout-footer,
+  //   .ant-menu,
+  //   [class*="css-dev-only-do-not-override"],
+  //   [class*="ant-menu"]
+  // ) {
+  //   // Сброс фона и границ
+  //   background: transparent !important;
+  //   background-color: transparent !important;
+  //   border: none !important;
+  //   box-shadow: none !important;
+  //   outline: none !important;
+
+  //   // Сброс размеров и позиционирования
+  //   height: auto !important;
+  //   min-height: 0 !important;
+  //   line-height: inherit !important;
+  //   padding: 0 !important;
+  //   margin: 0 !important;
+  //   position: static !important;
+  //   z-index: auto !important;
+  //   transition: none !important;
+
+  //   // Обнуление системных переменных AntD v5
+  //   --ant-color-bg-layout: transparent !important;
+  //   --ant-color-bg-container: transparent !important;
+  //   --ant-color-bg-elevated: transparent !important;
+  //   --ant-menu-item-bg: transparent !important;
+  //   --ant-menu-bg: transparent !important;
+  //   --ant-menu-horizontal-line-height: inherit !important;
+  //   --ant-menu-item-border-radius: 0 !important;
+  //   --ant-menu-item-color: inherit !important;
+  //   --ant-menu-item-active-bg: transparent !important;
+  //   --ant-menu-item-selected-bg: transparent !important;
+  // }
+
+  // // 2. ОЧИСТКА ВНУТРЕННИХ ЭЛЕМЕНТОВ МЕНЮ
+  // [class*="ant-menu"] {
+  //   display: flex !important;
+  //   border-inline-end: none !important;
+
+  //   // Убираем нижнюю линию у горизонтального меню
+  //   &.ant-menu-horizontal {
+  //     border-bottom: none !important;
+  //     &::after {
+  //       display: none !important;
+  //       content: none !important;
+  //     }
+  //   }
+
+  //   // Пункты меню (Items)
+  //   .ant-menu-item,
+  //   .ant-menu-submenu-title,
+  //   .ant-menu-overflow-item {
+  //     background: transparent !important;
+  //     margin: 0 !important;
+  //     padding: 0 !important; // Полностью убираем, чтобы задать свои в компоненте
+  //     display: flex !important;
+  //     align-items: center;
+  //     height: auto !important;
+  //     line-height: inherit !important;
+  //     transition: none !important;
+
+  //     // Убираем все подчеркивания и индикаторы (синие полоски)
+  //     &::after,
+  //     &::before {
+  //       display: none !important;
+  //       content: none !important;
+  //     }
+
+  //     // Сброс состояний hover/active/selected
+  //     &.ant-menu-item-selected,
+  //     &.ant-menu-item-active,
+  //     &.ant-menu-item-hover {
+  //       background: transparent !important;
+  //       color: inherit !important;
+  //       &::after {
+  //         display: none !important;
+  //       }
+  //     }
+  //   }
+
+  //   // Контент внутри пункта (текст)
+  //   .ant-menu-title-content {
+  //     margin: 0 !important;
+  //     transition: none !important;
+  //   }
+
+  //   // Скрытие системной кнопки "More" (...) при переполнении
+  //   .ant-menu-overflow-item-rest {
+  //     display: none !important;
+  //   }
+  // }
+
+  // // 3. ФИКС ДЛЯ ВЛОЖЕННЫХ SVG (иконки)
+  // .ant-menu-item .anticon {
+  //   margin: 0 !important;
+  //   font-size: inherit !important;
+  // }

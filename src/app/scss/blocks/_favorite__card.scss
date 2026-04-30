@@ -1,0 +1,70 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.favorite__card {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid rgba($white, 0.4);
+  box-shadow: 0px 0px 80px 0px rgba(255, 255, 255, 0.33);
+  overflow: visible;
+  cursor: pointer;
+  height: 100%;
+  transition:
+    transform $transition-800,
+    border $transition-800 !important;
+
+  @include vp-767 {
+    box-shadow: 0px 0px 25px 0px rgba($white, 0.33);
+    border: transparent;
+    user-select: none;
+    -webkit-user-drag: none;
+    display: flex;
+    flex-direction: column;
+    width: 224px;
+    height: 336px;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    border: 1px solid $white;
+    .favorite__delete-btn {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .favorite__delete-btn {
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    padding: 14px;
+    border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    cursor: pointer;
+    background-color: $white;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $transition-800 !important;
+
+    .favorite__delete-icon {
+      color: $black;
+    }
+  }
+
+  &-image {
+    border-radius: 16px;
+    overflow: hidden;
+    width: 100%;
+    height: 100% !important;
+    display: flex;
+
+    img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+  }
+}

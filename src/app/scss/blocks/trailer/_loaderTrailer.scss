@@ -1,0 +1,64 @@
+@use "../../global/mixins" as *;
+
+.loader-trailer {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  animation: loader-rotate 2s infinite linear;
+
+  @include vp-767 {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.loader-trailer__item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  animation: loader-item-rotate 1.5s infinite ease-in-out both;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 25%; // Размер головы змейки
+    height: 25%;
+    background-color: #fff;
+    border-radius: 100%;
+    animation: loader-item-fade 1.5s infinite ease-in-out both;
+  }
+}
+
+@for $i from 1 through 12 {
+  .loader-trailer__item:nth-child(#{$i}) {
+    animation-delay: -1.1s + ($i * 0.05s);
+    &:before {
+      animation-delay: -1.1s + ($i * 0.05s);
+    }
+  }
+}
+
+@keyframes loader-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-item-rotate {
+  85%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-item-fade {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+}
