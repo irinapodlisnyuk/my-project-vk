@@ -13,7 +13,6 @@ interface AccountProps {
 
 export const Account = ({ onClose }: AccountProps) => {
   const router = useRouter();
-   // Используем хук 
   const { data, isError, isLoading } = useUser();
 
  

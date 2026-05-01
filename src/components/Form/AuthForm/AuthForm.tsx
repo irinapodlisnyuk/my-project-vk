@@ -3,6 +3,10 @@ import { LoginForm } from "../LoginForm";
 import { RegisterForm } from "../RegisterForm";
 import { Icon } from "@/models";
 import { SuccessForm } from "../SuccessForm";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import { toggleTheme } from "@/store/themeSlice";
+import { Switch } from "antd";
 
 interface AuthFormProps {
   onClose: () => void;
@@ -10,7 +14,9 @@ interface AuthFormProps {
 
 export const AuthForm = ({ onClose }: AuthFormProps) => {
   const [authType, setAuthType] = useState<string>("auth");
-  const [isSuccess, setIsSuccess] = useState(false); 
+  const [isSuccess, setIsSuccess] = useState(false);
+  const dispatch = useDispatch();
+  const theme = useSelector((state: RootState) => state.theme);
 
   const handleClick = () => {
     setAuthType((prevState) =>
@@ -18,8 +24,18 @@ export const AuthForm = ({ onClose }: AuthFormProps) => {
     );
   };
 
+  const handleSwitch = () => {
+    dispatch(toggleTheme());
+  };
+
   return (
-    <div className="auth-form">
+    <div className={`auth-form auth-form--${theme}`}>
+      <Switch
+        className="auth-form__theme-btn"
+        checked={theme === "white"}
+        onChange={handleSwitch}
+      />
+
       <div className="auth-form__logo">
         <Icon
           name="mask-dekstop"
@@ -34,7 +50,6 @@ export const AuthForm = ({ onClose }: AuthFormProps) => {
           height={23}
         />
       </div>
-
 
       {isSuccess ? (
         <SuccessForm

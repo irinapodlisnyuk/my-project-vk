@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { fetchSearchMovies, clearSearch } from "@/slice/movieSlice";
-import { AppDispatch } from "@/api/store";
+import { AppDispatch } from "@/store/store";
 import { Button, Input, InputRef } from "antd";
 import { Icon } from "@/models/Icon";
 import { SearchResults } from "../SearchResults/SearchResults";

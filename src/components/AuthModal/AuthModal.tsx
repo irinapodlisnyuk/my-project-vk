@@ -1,10 +1,10 @@
 "use client";
-import { Modal } from "antd";
+import { Modal} from "antd";
 import { Icon } from "@/models";
 import { Account } from "../Account/Account";
 import { useEffect } from "react";
-
 import { useUser } from "@/hooks/useUser";
+
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -12,7 +12,7 @@ interface AuthModalProps {
 }
 
 export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
-  const { data: user } = useUser(); 
+  const { data: user } = useUser();
 
   useEffect(() => {
     if (user && isOpen) {

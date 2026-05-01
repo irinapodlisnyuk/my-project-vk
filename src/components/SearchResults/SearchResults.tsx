@@ -1,5 +1,5 @@
 "use client";
-import { AppDispatch, RootState } from "@/api/store";
+import { AppDispatch, RootState } from "@/store/store";
 import { IMovie } from "@/models";
 import { clearSearch } from "@/slice/movieSlice";
 import Link from "next/link";

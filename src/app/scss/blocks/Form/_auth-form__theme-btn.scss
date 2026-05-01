@@ -1,0 +1,11 @@
+@use "../../global/variables" as *;
+@use "../../global/mixins" as *;
+
+.auth-form__theme-btn {
+  opacity: 0 !important;
+  background-color: $grey !important;
+
+  position: absolute !important;
+  top: 10px !important;
+  left: 10px !important;
+}
