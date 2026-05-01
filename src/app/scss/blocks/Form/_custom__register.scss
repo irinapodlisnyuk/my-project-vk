@@ -24,7 +24,6 @@
   &:focus {
     border: 1px solid var(--content-active, $perano);
 
-    // Выбираем иконку, которая идет сразу после инпута
     & + .custom__name-icon,
     & + .custom__email-icon,
     & + .custom__key-icon,

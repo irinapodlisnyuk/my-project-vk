@@ -88,11 +88,10 @@ $z-modal-overlay: 1000;
   flex-direction: column;
 
   @include vp-767 {
-    padding-top: 0 !important; 
+    padding-top: 0 !important;
     overflow: visible;
   }
 
-  // 1. Кнопка паузы (внутри враппера)
   .trailer__play-btn {
     position: absolute;
     top: 50%;
@@ -115,7 +114,6 @@ $z-modal-overlay: 1000;
 
     &:hover {
       background-color: rgba($white, 0.4);
-      
     }
 
     @include vp-767 {
@@ -137,7 +135,7 @@ $z-modal-overlay: 1000;
       height: 18px;
     }
   }
- 
+
   &:hover {
     .trailer__play-btn {
       opacity: 1;
@@ -154,7 +152,7 @@ $z-modal-overlay: 1000;
         max-height: 100px;
         opacity: 1;
         visibility: visible;
-         margin-top: 0;
+        margin-top: 0;
       }
     }
   }
@@ -168,7 +166,7 @@ $z-modal-overlay: 1000;
   left: -20%;
 
   @include vp-767 {
-    position: relative; 
+    position: relative;
     width: 100% !important;
     padding-top: 56.25%;
     top: 0 !important;
@@ -184,10 +182,10 @@ $z-modal-overlay: 1000;
 
     @include vp-767 {
       position: absolute;
-      width: 140% !important; 
+      width: 140% !important;
       height: 140% !important;
-      top: -20% !important; 
-      left: -20% !important; 
+      top: -20% !important;
+      left: -20% !important;
     }
   }
 }
@@ -233,17 +231,17 @@ $z-modal-overlay: 1000;
 
   @include vp-767 {
     position: relative;
-    max-height: 0;     
+    max-height: 0;
     opacity: 0;
     visibility: hidden;
     margin: 0;
     width: 100%;
     background-color: $black;
-    transition: all $transition-800; 
+    transition: all $transition-800;
     overflow: hidden;
 
     &-text {
-      opacity: 1 !important; 
+      opacity: 1 !important;
       padding: 16px 20px;
     }
   }

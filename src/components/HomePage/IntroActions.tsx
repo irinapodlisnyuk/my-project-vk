@@ -47,6 +47,7 @@ export const IntroActions = ({
       <div className={`intro__card-actions ${isMoviePage ? "isMovie" : ""}`}>
         <Button
           className="intro__thriller-btn btn"
+          aria-label="Посмотреть трейлер" 
           type="text"
           onClick={() => setIsTrailerOpen(true)}
           disabled={!movie?.trailerUrl}
@@ -77,6 +78,7 @@ export const IntroActions = ({
         {onUpdate && (
           <Button
             className="intro__update-btn btn"
+            aria-label="Обновить случайный фильм" 
             onClick={handleUpdate}
             disabled={isLoading}
             type="text"

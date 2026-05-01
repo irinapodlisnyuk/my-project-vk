@@ -12,8 +12,7 @@ export const AppHeaderDesktop = () => {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const pathname = usePathname();
 
-
-const { data: user } = useUser();
+  const { data: user } = useUser();
 
   const menuItems = useMemo(
     () => [
@@ -26,7 +25,11 @@ const { data: user } = useUser();
   return (
     <header className="header__desktop-wrapper">
       <div className="header__logo">
-        <Link className="header__logo-link" href="/">
+        <Link
+          className="header__logo-link"
+          href="/"
+          aria-label="Перейти на главную страницу VK-Маруся"
+        >
           <Icon
             name="mask-dekstop"
             className="header__marusya-icon"
@@ -67,7 +70,6 @@ const { data: user } = useUser();
           <Button
             className="account__user-btn"
             type="text"
-
             onPointerDown={(e) => {
               // Если это тач-экран (палец), предотвращаем эмуляцию клика мышкой
               if (e.pointerType === "touch") {

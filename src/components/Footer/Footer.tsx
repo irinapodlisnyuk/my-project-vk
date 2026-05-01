@@ -9,10 +9,11 @@ const AppFooter = () => {
   return (
     <Footer className="footer">
       <div className="container">
-         <div className="footer__wrapper">
+        <div className="footer__wrapper">
           <ul className="footer__socials">
             <li className="footer__socials-item">
               <Link
+                aria-label="Перейти на страницу Вконтакте"
                 href="https://vk.com"
                 className="footer__socials-link"
                 target="_blank"
@@ -23,6 +24,7 @@ const AppFooter = () => {
             </li>
             <li className="footer__socials-item">
               <Link
+                aria-label="Перейти на страницу Ютуб"
                 href="https://youtube.com"
                 className="footer__socials-link"
                 target="_blank"
@@ -33,6 +35,7 @@ const AppFooter = () => {
             </li>
             <li className="footer__socials-item">
               <Link
+                aria-label="Перейти на страницу Однокласстники"
                 href="https://ok.ru"
                 className="footer__socials-link"
                 target="_blank"
@@ -44,6 +47,7 @@ const AppFooter = () => {
 
             <li className="footer__socials-item">
               <Link
+                aria-label="Перейти на страницу телеграм"
                 href="https://t.me"
                 className="footer__socials-link"
                 target="_blank"

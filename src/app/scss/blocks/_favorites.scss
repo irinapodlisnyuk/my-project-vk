@@ -27,13 +27,10 @@
   @include vp-767 {
     display: block;
     width: 100%;
-    // Swiper должен иметь overflow: visible, чтобы видеть следующую карточку
+
     .swiper {
       overflow: hidden;
-      // 2. Создаем безопасную зону для номеров сверху и теней
       padding: 24px 20px !important;
-
-      // 3. Компенсируем этот воздух маргинами, чтобы контейнер не раздувался
       margin: -24px -20px !important;
     }
   }
@@ -51,10 +48,10 @@
   }
 
   @include vp-767 {
-    display: none; // Скрываем десктопную обертку на мобилках
+    display: none; 
   }
 
   @media (max-width: 768px) {
-    min-height: 380px; // Высота одного ряда слайдера на мобилке
+    min-height: 380px; 
   }
 }

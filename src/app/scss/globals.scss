@@ -8,7 +8,6 @@
 /* 2. Сбросы (Нормализация) */
 @use "./global/normalize.scss";
 @use "./global/reboot";
-@use "./global/antd-reset"; // Тот самый файл с "костылями"
 
 /* 3. Утилиты и общие классы */
 @use "./global/container";
@@ -25,7 +24,6 @@
 @use "./blocks/footer";
 @use "./blocks/loaderPage";
 @use "./blocks/search-results";
-@use "./blocks/swiper";
 @use "./blocks/genres";
 @use "./blocks/genre";
 @use "./blocks/search";

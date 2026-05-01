@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -9,7 +9,7 @@ import { getRandomMovie } from "@/api/MovieApi";
 
 interface IntroProps {
   initialMovie: IMovie;
-  movieId?: string; 
+  movieId?: string;
 }
 
 export const Intro = ({ initialMovie, movieId }: IntroProps) => {
@@ -35,18 +35,19 @@ export const Intro = ({ initialMovie, movieId }: IntroProps) => {
               isMoviePage={!!movieId}
             />
           </div>
-          
+
           <Image
             className="intro__image"
             src={movie.backdropUrl || "/images/no-poster.png"}
-            alt={movie.title || "Кино постер"} 
+            alt={movie.title || "Кино постер"}
             priority
             width={680}
             height={552}
+            style={{ width: "100%", height: "auto" }}
+            fetchPriority="high"
           />
         </div>
       </div>
     </section>
   );
 };
-

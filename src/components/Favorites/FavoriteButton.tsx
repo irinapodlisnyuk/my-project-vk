@@ -51,6 +51,7 @@ export const FavoriteButton = ({
       loading={mutation.isPending}
       onPointerDown={handleFavoriteClick}
       style={{ touchAction: "manipulation" }} 
+      aria-label="Добавить фильм в избранное" 
     >
       <Icon
         name="love-favorites"

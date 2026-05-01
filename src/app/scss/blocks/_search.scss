@@ -1,9 +1,8 @@
 @use "../global/variables" as *;
-@use "../global/antd-reset" as *;
 @use "../global/mixins" as *;
 
 // Deskpop search
-// Контейнер, который внутри оверлея или хедера
+
 .header__search {
   width: 100%;
   //max-width: 656px;
@@ -19,7 +18,6 @@
     align-items: center;
     cursor: text;
 
-    // У Ant Design сложная структура, заставляем её принимать клики
     .ant-input-affix-wrapper,
     .ant-input {
       pointer-events: auto !important;
