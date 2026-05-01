@@ -27,7 +27,8 @@ $fire-brick: #C82020;
 
 // Typography
 
-$ff-play: "Play", sans-serif;
+//$ff-play: "Play", sans-serif;
+$ff-play: var(--font-play), sans-serif;
 
 // Viewport
 

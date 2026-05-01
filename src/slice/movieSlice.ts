@@ -34,7 +34,7 @@ const movieSlice = createSlice({
     builder
       .addCase(fetchSearchMovies.pending, (state) => {
         state.status = "loading";
-        state.isLoading = true; // Ставим флаг загрузки
+        state.isLoading = true; 
       })
       .addCase(fetchSearchMovies.fulfilled, (state, action) => {
         state.status = "success";

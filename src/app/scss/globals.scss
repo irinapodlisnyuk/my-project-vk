@@ -3,7 +3,7 @@
 /* 1. Настройки и инструменты (База) */
 @use "./global/variables";
 @use "./global/mixins";
-@use "./global/fonts";
+// @use "./global/fonts";
 
 /* 2. Сбросы (Нормализация) */
 @use "./global/normalize.scss";

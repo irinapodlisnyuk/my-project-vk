@@ -21,7 +21,7 @@ export const getMovieTop = async (): Promise<Movies> => {
 //	 Получение случайного фильма
 export const getRandomMovie = async (): Promise<IMovie> => {
   const url = `${BASE_URL}/movie/random?language=ru`;
-  const response = await fetch(url, { cache: "no-store" }); // важно для случайного выбора
+  const response = await fetch(url,  { next: { revalidate: 0 } });
   if (!response.ok) throw new Error("Ошибка загрузки случайного фильма");
   return await response.json();
 };
@@ -32,10 +32,9 @@ export const getMovieId = async (movieId: string): Promise<IMovie> => {
   if (!response.ok) throw new Error("Ошибка получения данных");
   const data = await response.json();
 
-  // Маппим данные: превращаем числовой ID от сервера в строку для твоего IMovie
   return {
     ...data,
-    id: String(data.id), // Теперь TypeScript будет доволен
+    id: String(data.id),
     //Исправляем опечатку года
     // releaseYear: data.relaseYear
   };

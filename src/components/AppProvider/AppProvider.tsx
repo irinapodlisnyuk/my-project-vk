@@ -4,7 +4,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "@/api/queryClient"; 
+import { queryClient } from "@/api/queryClient";
 
 export default function AppProvider({
   children,
@@ -12,11 +12,11 @@ export default function AppProvider({
   children: React.ReactNode;
 }) {
   return (
-    <Provider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <AntdRegistry>
+    <AntdRegistry>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
           <ConfigProvider
-             wave={{ disabled: true }} 
+            wave={{ disabled: true }}
             theme={{
               hashed: false,
               token: {
@@ -24,7 +24,7 @@ export default function AppProvider({
                 colorBgContainer: "transparent",
                 colorBgElevated: "transparent",
               },
-               components: {
+              components: {
                 Button: {
                   controlOutline: "none",
                   boxShadow: "none",
@@ -44,8 +44,8 @@ export default function AppProvider({
           >
             {children}
           </ConfigProvider>
-        </AntdRegistry>
-      </QueryClientProvider>
-    </Provider>
+        </QueryClientProvider>
+      </Provider>
+    </AntdRegistry>
   );
 }
