@@ -42,7 +42,7 @@
       }
     }
 
-    &--active {
+    &.active {
       color: $white;
       &::after {
         display: none;

@@ -36,7 +36,7 @@ export const AccountView: FC<AccountViewProps> = ({ user }) => {
           </li>
           <li className="account__info-item">
             <button
-              className={`account__settings-btn ${activeTab === "settings" ? "account__user-btn--active" : ""}`}
+              className={`account__settings-btn ${activeTab === "settings" ? "account__settings-btn--active" : ""}`}
               onClick={() => setActiveTab("settings")}
             >
               <Icon
