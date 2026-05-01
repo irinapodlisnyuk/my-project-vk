@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { searchMovies } from "@/api/MovieApi"; 
+import { searchMovies, getMovieId } from "@/api/MovieApi";
 import { IMovie } from "@/models";
 
 export const fetchSearchMovies = createAsyncThunk(
@@ -10,10 +10,18 @@ export const fetchSearchMovies = createAsyncThunk(
   },
 );
 
+export const fetchMovieById = createAsyncThunk(
+  "movies/fetchById",
+  async (id: string) => {
+    return await getMovieId(id);
+  },
+);
+
 const movieSlice = createSlice({
   name: "movies",
   initialState: {
     searchResults: [] as IMovie[],
+    currentMovie: null as IMovie | null,
     status: "idle",
     isLoading: false,
   },

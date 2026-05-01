@@ -1,7 +1,6 @@
 import { Icon } from "@/models";
 import { formatRuntime } from "@/utils/formatRuntime";
 import { GENRE_MAP } from "@/utils/ru";
-
 import { IMovie } from "@/models";
 
 interface MovieProps {
@@ -15,20 +14,42 @@ const getRatingClass = (rating: number) => {
   return "intro__rating--low"; // Красный
 };
 
-export const IntroInfo = ({ movie }: MovieProps) => (
-  <div className="intro__card-info">
-    <div
-      className={`intro__rating ${getRatingClass(Number(movie.tmdbRating))}`}
-    >
-      <Icon name="star" width={16} height={15} />
-      <span className="intro__rating-text ">{movie.tmdbRating.toFixed(1)}</span>
+export const IntroInfo = ({ movie }: MovieProps) => {
+  return (
+    <div className="intro__card-info">
+      <div
+        className={`intro__rating ${getRatingClass(Number(movie.tmdbRating || 0))}`}
+      >
+        <Icon name="star" width={16} height={15} />
+        <span className="intro__rating-text">
+          {movie.tmdbRating ? Number(movie.tmdbRating).toFixed(1) : "0.0"}
+        </span>
+      </div>
+      <span className="intro__card-year">{movie.releaseYear || "—"}</span>
+      <span className="intro__card-genre">
+        {movie.genres?.map((g) => GENRE_MAP[g] || g).join(", ") || "—"}
+      </span>
+      <div className="intro__card-runtime">
+        <strong>{movie.runtime ? formatRuntime(movie.runtime) : "—"}</strong>
+      </div>
     </div>
-    <span className="intro__card-year">{movie.releaseYear}</span>
-    <span className="intro__card-genre">
-      {movie.genres.map((g) => GENRE_MAP[g] || g).join(", ")}
-    </span>
-    <div className="intro__card-runtime">
-      <strong>{formatRuntime(movie.runtime)}</strong>
-    </div>
-  </div>
-);
+  );
+};
+//    return (
+//   <div className="intro__card-info">
+//     <div
+//       className={`intro__rating ${getRatingClass(Number(movie.tmdbRating))}`}
+//     >
+//       <Icon name="star" width={16} height={15} />
+//       <span className="intro__rating-text ">{movie.tmdbRating.toFixed(1)}</span>
+//     </div>
+//     <span className="intro__card-year">{movie.releaseYear}</span>
+//     <span className="intro__card-genre">
+//       {movie.genres?.map((g) => GENRE_MAP[g] || g).join(", ")}
+//     </span>
+//     <div className="intro__card-runtime">
+//       <strong>{formatRuntime(movie.runtime)}</strong>
+//     </div>
+//   </div>
+// );
+// };

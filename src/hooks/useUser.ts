@@ -16,7 +16,7 @@ export const useUser = () => {
 
   useEffect(() => {
     if (isSuccess && data === null && !isFetching) {
-      if (window.location.pathname !== "/") {
+      if (window.location.pathname === "/account") {
         router.push("/");
       }
     }

@@ -5,7 +5,8 @@ interface MovieProps {
   movie: IMovie;
 }
 
-export default async function MovieInfo({ movie }: MovieProps) {
+export default function MovieInfo({ movie }: MovieProps) {
+  
   return (
     <section className="movie">
       <div className="container">
@@ -15,7 +16,7 @@ export default async function MovieInfo({ movie }: MovieProps) {
             <li className="movie__info-item">
               <span className="movie__info-label">Язык оригинала</span>
               <span className="movie__info-value">
-                 {movie.language.length > 0 ? getLanguageName(movie.language) : "—"}
+                 {movie.language?.length > 0 ? getLanguageName(movie.language) : "—"}
               </span>
             </li>
             <li className="movie__info-item">

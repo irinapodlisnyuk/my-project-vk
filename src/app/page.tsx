@@ -10,7 +10,6 @@ export default async function HomePage() {
   return (
     <>
       <Intro initialMovie={movie} />
-
       <Suspense fallback={<MovieTopSkeleton />}>
         <MovieTop />
       </Suspense>

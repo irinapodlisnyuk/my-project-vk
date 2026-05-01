@@ -1,11 +1,16 @@
-import { combineReducers } from "redux";
+
 import { TOGGLE_THEME } from "./actions";
+
+interface ThemeAction {
+  type: typeof TOGGLE_THEME;
+  payload: string;
+}
 
 const initialState = {
 	theme: "white",
 };
 
-const themeReducer = (state = initialState, action) => {
+const themeReducer = (state = initialState, action: ThemeAction) => {
 	switch (action.type) {
 		case TOGGLE_THEME:
 			return {
@@ -17,8 +22,5 @@ const themeReducer = (state = initialState, action) => {
 	}
 };
 
-const rootReducer = combineReducers({
-	theme: themeReducer,
-});
 
-export default rootReducer;
+export default themeReducer; 

@@ -9,7 +9,7 @@ import { getRandomMovie } from "@/api/MovieApi";
 
 interface IntroProps {
   initialMovie: IMovie;
-  movieId?: string; // Теперь компонент знает про movieId
+  movieId?: string; 
 }
 
 export const Intro = ({ initialMovie, movieId }: IntroProps) => {
@@ -39,11 +39,10 @@ export const Intro = ({ initialMovie, movieId }: IntroProps) => {
           <Image
             className="intro__image"
             src={movie.backdropUrl || "/images/no-poster.png"}
-            alt={movie.title}
+            alt={movie.title || "Кино постер"} 
             priority
             width={680}
             height={552}
-           // style={{ height: 'auto' }} 
           />
         </div>
       </div>
