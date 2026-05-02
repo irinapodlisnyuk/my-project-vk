@@ -1,3 +1,5 @@
+import './loaderTrailer.scss';
+
 export default function LoaderTrailer() {
   return (
     <div className="loader-trailer">

@@ -1,9 +1,8 @@
-@use "tailwindcss";
+//@use "tailwindcss";
 
 /* 1. Настройки и инструменты (База) */
 @use "./global/variables";
 @use "./global/mixins";
-// @use "./global/fonts";
 
 /* 2. Сбросы (Нормализация) */
 @use "./global/normalize.scss";
@@ -22,31 +21,3 @@
 @use "./blocks/movie/movie";
 @use "./blocks/movie/movie-top";
 @use "./blocks/footer";
-@use "./blocks/loaderPage";
-@use "./blocks/search-results";
-@use "./blocks/genres";
-@use "./blocks/genre";
-@use "./blocks/search";
-
-@use "./blocks/account";
-@use "./blocks/settings";
-@use "./blocks/favorites";
-@use "./blocks/favorite__card";
-
-//Form
-@use "./blocks/Form/custom_search";
-@use "./blocks/Form/formField";
-@use "./blocks/Form/authForm";
-@use "./blocks/Form/loginForm";
-@use "./blocks/Form/custom-login";
-@use "./blocks/Form/ant-modal-close";
-@use "./blocks/Form/form__btn";
-@use "./blocks/Form/registerForm";
-@use "./blocks/Form/custom__register";
-@use "./blocks/Form/success-form";
-@use "./blocks/Form/loaderForm";
-@use "./blocks/Form/auth-form__theme-btn";
-
-// Trailer
-@use "./blocks/trailer/trailerModal";
-@use "./blocks/trailer/loaderTrailer";

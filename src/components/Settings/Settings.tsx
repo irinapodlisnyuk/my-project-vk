@@ -3,6 +3,7 @@ import { getInitials } from "@/utils/Initials";
 import { LogoutButton } from "../LogoutButton";
 import { Icon } from "@/models";
 import { useUser } from "@/hooks/useUser";
+import './Settings.scss';
 
 export const SettingsPage = () => {
   const { data: user } = useUser();

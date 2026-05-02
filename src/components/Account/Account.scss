@@ -1,5 +1,5 @@
-@use "../global/variables" as *;
-@use "../global/mixins" as *;
+@use "../../app/scss/global/variables" as *;
+@use "../../app/scss/global/mixins" as *;
 
 .account {
   padding: 64px 0 0;
@@ -88,6 +88,9 @@
 
   &__favorites-btn,
   &__settings-btn {
+    border: none;
+    color: $white;
+    background-color: transparent;
     position: relative;
     display: flex;
     cursor: pointer;

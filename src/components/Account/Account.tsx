@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/hooks/useUser";
 
+
 interface AccountProps {
   onClose?: () => void; 
 }

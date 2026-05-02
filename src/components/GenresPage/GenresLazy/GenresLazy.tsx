@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Flex } from "antd";
 import GenresCard from "@/components/GenresPage/GenresCard/GenresCard";
 import { IMovie } from "@/models";
+import '../Genres.scss'
 
 interface GenresGridProps {
   genres: string[];

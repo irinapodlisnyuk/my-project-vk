@@ -4,6 +4,7 @@ import { Flex } from "antd";
 import MovieCard from "@/components/GenrePage/MoviesCard/MoviesCard";
 import { IMovie } from "@/models";
 import { Button } from "antd";
+import '../Genre.scss';
 
 export default function MoviesList({ allMovies }: { allMovies: IMovie[] }) {
   const [visibleCount, setVisibleCount] = useState(10);

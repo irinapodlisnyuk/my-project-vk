@@ -24,7 +24,6 @@ export const AppHeaderMobile = () => {
   }, []);
 
   const handleOpenSearch = useCallback(() => {
-    // e.stopPropagation();
     setIsSearchOpen(true);
   }, []);
 
@@ -32,7 +31,11 @@ export const AppHeaderMobile = () => {
     <div className="header__mobile">
       <div className="header__mobile-wrapper">
         <div className="header__logo">
-          <Link className="header__logo-link" href="/">
+          <Link
+            className="header__logo-link"
+            href="/"
+            aria-label="Перейти на главную страницу VK-Маруся"
+          >
             <Icon
               name="mask-dekstop"
               className="header__marusya-icon"
@@ -68,7 +71,9 @@ export const AppHeaderMobile = () => {
           </Button>
 
           {user ? (
-            <Link href="/account">
+            <Link 
+            href="/account"
+              aria-label="Перейти форму авторизации и/или регистрации">
               <Button className="header__login-btn" type="text">
                 <Icon
                   name="login-icon"
@@ -97,7 +102,6 @@ export const AppHeaderMobile = () => {
         <div
           className="header__mobile-search is-active"
           onClick={(e) => {
-            
             if (e.target === e.currentTarget) setIsSearchOpen(false);
           }}
         >

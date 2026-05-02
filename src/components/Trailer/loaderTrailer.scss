@@ -1,4 +1,5 @@
-@use "../../global/mixins" as *;
+@use "../../app/scss/global/variables" as *;
+@use "../../app/scss/global/mixins" as *;
 
 .loader-trailer {
   width: 40px;

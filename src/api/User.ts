@@ -41,22 +41,28 @@ export async function registerUser(
   }
 }
 
-export function loginUser(email: string, password: string): Promise<void> {
+//
 
+export async function loginUser(
+  email: string,
+  password: string,
+): Promise<{ success: boolean }> {
   const params = new URLSearchParams();
   params.append("email", email);
   params.append("password", password);
 
-  return fetch(`${BASE_URL}/auth/login`, {
+  const response = await fetch(`${BASE_URL}/auth/login`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: params,
-    credentials: "include", 
-  })
-    .then(validateResponse)
-    .then(() => undefined);
+    credentials: "include",
+  });
+
+  const validatedRes = await validateResponse(response);
+  const data = await validatedRes.json();
+
+  // Возвращаем объект, а не undefined, чтобы TypeScript был доволен
+  return { success: !!data };
 }
 
 // Исправляем fetchMe

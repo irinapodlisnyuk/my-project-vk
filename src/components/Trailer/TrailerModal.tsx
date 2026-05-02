@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Modal } from "antd";
 import LoaderTrailer from "./LoaderTrailer";
 import { Icon } from "@/models";
+import './trailerModal.scss';
 
 interface TrailerModalProps {
   isOpen: boolean;

@@ -3,6 +3,8 @@ import { FormField } from "../FormField";
 import { Button } from "../Button";
 import { queryClient } from "../../../api/queryClient";
 import { loginUser } from "../../../api/User";
+import './LoginForm.scss';
+import './Custom-login.scss'
 
 import { FC, FormEventHandler, useState } from "react";
 import { Icon } from "@/models";
@@ -12,16 +14,27 @@ export const LoginForm: FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginMutation = useMutation(
-    {
-      mutationFn: () => loginUser(email, password),
-      onSuccess() {
-        queryClient.invalidateQueries({ queryKey: ["users", "me"] });
-      },
-    },
-    queryClient,
-  );
+  // const loginMutation = useMutation(
+  //   {
+  //     mutationFn: () => loginUser(email, password),
+  //     onSuccess() {
+  //       queryClient.invalidateQueries({ queryKey: ["users", "me"] });
+  //     },
+  //   },
+  //   queryClient,
+  // );
 
+     const loginMutation = useMutation({
+    mutationFn: () => loginUser(email, password),
+    onSuccess(data) {
+      if (data) {
+        localStorage.setItem('token', 'true');
+        queryClient.invalidateQueries({ queryKey: ["users", "me"] });
+      }
+    },
+  });
+
+  
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
 

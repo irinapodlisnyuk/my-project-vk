@@ -6,6 +6,8 @@ import { AppDispatch } from "@/store/store";
 import { Button, Input, InputRef } from "antd";
 import { Icon } from "@/models/Icon";
 import { SearchResults } from "../SearchResults/SearchResults";
+import './Custom_search.scss';
+import './Search.scss';
 
 interface SearchFormProps {
   onClose?: () => void;

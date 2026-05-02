@@ -5,6 +5,7 @@ import FavoriteCard from "./FavoriteCard";
 import { IMovie } from "@/models";
 import LoaderPage from "../LoaderPage/LoaderPage";
 import { User } from "@/api/User";
+import './Favorites.scss';
 
 
 import "swiper/css";

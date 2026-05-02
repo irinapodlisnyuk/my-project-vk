@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { toggleTheme } from "@/store/themeSlice";
 import { Switch } from "antd";
+import './AuthForm.scss';
+import './Auth-form__theme-btn.scss';
 
 interface AuthFormProps {
   onClose: () => void;

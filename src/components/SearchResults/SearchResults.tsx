@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IntroInfo } from "../HomePage/IntroInfo";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import './Search-results.scss';
 
 interface SearchResultsProps {
   query: string;
@@ -39,7 +40,7 @@ export const SearchResults = ({ query, setQuery }: SearchResultsProps) => {
       <div className="search__results-content">
         <Image
           className="search__results-icon"
-          src={movie.posterUrl || "/images/no-poster.png"}
+          src={movie.posterUrl || "/images/no-poster.webp"}
           alt={movie.title}
           width={158}
           height={206}

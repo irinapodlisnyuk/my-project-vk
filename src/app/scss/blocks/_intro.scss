@@ -233,7 +233,7 @@
     padding: 4px 12px;
 
     &--high {
-      background-color: $forest-green; 
+      background-color: $forest-green;
     }
 
     &--medium {
@@ -258,5 +258,9 @@
 
   &__image {
     border-radius: 16px;
+    aspect-ratio: 680 / 552;
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }

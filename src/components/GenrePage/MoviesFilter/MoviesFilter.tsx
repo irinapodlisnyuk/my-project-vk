@@ -1,5 +1,6 @@
 import { getMovies } from "@/api/MovieApi";
 import MoviesList from "@/components/GenrePage/MoviesList/MoviesList";
+import '../Genre.scss';
 
 export default async function MoviesFilter({
   params,

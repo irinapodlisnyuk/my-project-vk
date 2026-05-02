@@ -1,5 +1,5 @@
-@use "../global/mixins" as *;
-@use "../global/variables" as *;
+@use "../../app/scss/global/variables" as *;
+@use "../../app/scss/global/mixins" as *;
 
 .loader-wrapper {
   box-sizing: border-box;

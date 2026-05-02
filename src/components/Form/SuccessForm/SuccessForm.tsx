@@ -1,4 +1,5 @@
 import { Button } from "../Button";
+import './success-form.scss'
 
 interface SuccessFormProps {
   onLoginClick: () => void;

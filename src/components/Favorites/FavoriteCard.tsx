@@ -4,6 +4,7 @@ import Link from "next/link";
 import { IMovie } from "@/models";
 import DeleteFavorite from "./DeleteFavorite";
 import { User } from "@/api/User";
+import './Favorite__card.scss';
 
 interface FavoriteCardProps {
   movie: IMovie;
@@ -16,7 +17,7 @@ export const FavoriteCard = ({ movie, priority, user }: FavoriteCardProps) => {
     <Link href={`/movie/${movie.id}`} className="favorite__movie-item">
       <div className="favorite__card">
         <Image
-          src={movie.posterUrl || "/images/no-poster.png"}
+          src={movie.posterUrl || "/images/no-poster.webp"}
           alt={movie.title || "Постер"}
           width={224}
           height={336}

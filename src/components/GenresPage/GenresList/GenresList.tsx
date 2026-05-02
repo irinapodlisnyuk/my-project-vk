@@ -1,6 +1,7 @@
 import { getGenres } from "@/api/GenresApi";
 import { getMovies } from "@/api/MovieApi";
 import GenresLazy from "../GenresLazy/GenresLazy";
+import '../Genres.scss'
 
 
 const GenresList = async () => {

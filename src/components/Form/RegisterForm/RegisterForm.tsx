@@ -8,6 +8,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import { Icon } from "@/models";
+import './RegisterForm.scss';
+import './Custom__register.scss';
 
 interface RegisterFormProps {
   onSuccess: () => void;
@@ -48,8 +50,8 @@ export const RegisterForm: FC<RegisterFormProps> = ({ onSuccess }) => {
       mutationFn: (data: CreateRegisterForm) =>
         registerUser(data.email, data.name, data.surname, data.password),
       onSuccess() {
-        reset(); // Очистить форму после успеха
-        onSuccess(); // Показываем экран успеха
+        reset(); 
+        onSuccess(); 
       },
     },
     queryClient,

@@ -1,14 +1,10 @@
-@use "../../global/variables" as *;
-@use "../../global/mixins" as *;
+@use "../../app/scss/global/variables" as *;
+@use "../../app/scss/global/mixins" as *;
 
 .ant-modal {
   top: auto !important;
   padding-bottom: 0 !important;
-
-
   width: 400px !important;
-
-
   max-width: calc(
     100vw - 32px
   ) !important; // Оставляет по 16px отступов от краев экрана
@@ -28,7 +24,6 @@
       top: -205px !important;
       right: -100px !important;
     }
-
     
     @media (max-width: 767px) {
       top: 10px !important;

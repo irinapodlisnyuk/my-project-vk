@@ -36,7 +36,7 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
       <div className="movie-top__image">
         <Image
           src={
-            movie.posterUrl?.trim() ? movie.posterUrl : "/images/no-poster.png"
+            movie.posterUrl?.trim() ? movie.posterUrl : "/images/no-poster.webp"
           }
           alt={movie.title || "Постер"}
           width={224}

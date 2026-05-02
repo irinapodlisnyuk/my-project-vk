@@ -4,6 +4,7 @@ import { Icon } from "@/models";
 import { Account } from "../Account/Account";
 import { useEffect } from "react";
 import { useUser } from "@/hooks/useUser";
+import './ant-modal-close.scss'
 
 
 interface AuthModalProps {

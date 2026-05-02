@@ -1,3 +1,4 @@
+import './LoaderForm.scss'
 
 export const LoaderForm = () => (
   <div className="loader__btn">

@@ -1,5 +1,6 @@
 import { FC, HTMLAttributes } from "react";
 import { LoaderForm } from "../LoaderForm";
+import './Form__btn.scss';
 
 interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;

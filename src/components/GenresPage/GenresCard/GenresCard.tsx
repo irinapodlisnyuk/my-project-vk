@@ -3,6 +3,7 @@ import { BASE_URL } from "@/api/config";
 import { GENRE_MAP } from "@/utils/ru";
 import Image from "next/image";
 import Link from "next/link";
+import '../Genres.scss'
 
 interface GenreProps {
   name: string;
@@ -24,7 +25,7 @@ export default function GenresCard({ name, backdropUrl, priority }: GenreProps) 
   return (
     <Link href={`/genres/${genreKey.toLowerCase()}`} className="genre__link">
       <div className="genre__card">
-        <Image //для обязательно указывать размеры
+        <Image 
           className="genre__card-image"
           src={imageSrc}
           alt={russianName}
@@ -34,7 +35,7 @@ export default function GenresCard({ name, backdropUrl, priority }: GenreProps) 
           unoptimized
           onError={(e) => {
             const target = e.currentTarget as HTMLImageElement;
-            target.src = "/images/no-poster.png";
+            target.src = "/images/no-poster.webp";
           }}
           style={{ width: '100%', height: 'auto' }}
         />

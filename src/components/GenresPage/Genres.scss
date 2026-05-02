@@ -1,6 +1,6 @@
 @use "sass:color";
-@use "../global/variables" as *;
-@use "../global/mixins" as *;
+@use "../../app/scss/global/variables" as *;
+@use "../../app/scss/global/mixins" as *;
 
 .genres {
   position: relative;

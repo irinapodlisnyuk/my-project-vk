@@ -4,6 +4,8 @@ import { Icon,  } from "@/models";
 import { useFavoriteMovies } from "@/hooks/useFavoriteMovies";
 import FavoritesList from "../Favorites/FavoritesList";
 import Settings from "../Settings/Settings";
+import './Account.scss'
+import LoaderPage from "../LoaderPage/LoaderPage";
 
 interface AccountViewProps {
   user: User;
@@ -15,7 +17,7 @@ export const AccountView: FC<AccountViewProps> = ({ user }) => {
     const { favoriteMovies, isLoading } = useFavoriteMovies(activeTab === "favorites");
 
   return (
-    <section className="account">
+    <section className="account" style={{ minHeight: '600px' }}>
       <div className="container">
         <h1 className="account__title">Мой аккаунт</h1>
         <ul className="account__info-list">
@@ -55,7 +57,7 @@ export const AccountView: FC<AccountViewProps> = ({ user }) => {
         {activeTab === "favorites" ? (
             <div className="account__favorites-content">
               {isLoading ? (
-              <p>Загрузка...</p>
+               <div className="loader"><LoaderPage/></div>
             ) : (
               <FavoritesList initialMovies={favoriteMovies} user={user} />
             )}
