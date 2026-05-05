@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${playFont.variable}`}>
+      <body className={`${playFont.className} ${playFont.variable}`}>
         <AntdProvider>
           <div className="root-wrapper">
             <AppHeader />

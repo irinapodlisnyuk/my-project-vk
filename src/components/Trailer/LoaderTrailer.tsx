@@ -1,4 +1,3 @@
-
 import styles from './loaderTrailer.module.scss'
 
 export default function LoaderTrailer() {
