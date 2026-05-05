@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Modal } from "antd";
 import LoaderTrailer from "./LoaderTrailer";
 import { Icon } from "@/models";
-import './trailerModal.scss';
+import styles from './trailerModal.module.scss'
 
 interface TrailerModalProps {
   isOpen: boolean;
@@ -102,29 +102,29 @@ export const TrailerModal = ({
       destroyOnHidden
       centered
       width={960}
-      rootClassName="trailer__modal-custom"
+      rootClassName={styles['trailer__modal-custom']}
     >
-      <div className="trailer__wrapper">
-        <div className="trailer__video-container">
-          <div ref={containerRef} className="trailer__iframe-target" />
+      <div className={styles['trailer__wrapper']}>
+        <div className={styles['trailer__video-container']}>
+          <div ref={containerRef} className={styles['trailer__iframe-target']}/>
         </div>
 
         {/* Прозрачный блок поверх для блокировки кликов */}
-        <div className="trailer__overlay" onClick={togglePlay} />
+        <div className={styles['trailer__overlay']} onClick={togglePlay} />
 
-        <button className="trailer__play-btn" onClick={togglePlay}>
-          <div className="trailer__play-icon">
+        <button className={styles['trailer__play-btn']} onClick={togglePlay}>
+          <div className={styles['trailer__play-icon']}>
             {isPlaying ? (
               <Icon
                 name="pause-icon"
-                className="trailer__pause-img"
+                className={styles['trailer__pause-img']}
                 width={20}
                 height={30}
               />
             ) : (
               <Icon
                 name="play-icon"
-                className="trailer__play-img"
+                className={styles['trailer__play-img']}
                 width={25}
                 height={31}
               />
@@ -132,12 +132,12 @@ export const TrailerModal = ({
           </div>
         </button>
 
-        <div className="trailer__info">
-          <span className="trailer__info-text">{title}</span>
+        <div className={styles['trailer__info']}>
+          <span className={styles['trailer__info-text']}>{title}</span>
         </div>
 
         {!isReady && (
-          <div className="trailer__loader-wrapper">
+          <div className={styles['trailer__loader-wrapper']}>
             <LoaderTrailer />
           </div>
         )}

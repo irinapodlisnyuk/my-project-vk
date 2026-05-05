@@ -1,6 +1,6 @@
 import { getMovies } from "@/api/MovieApi";
 import MoviesList from "@/components/GenrePage/MoviesList/MoviesList";
-import '../Genre.scss';
+import genreStyles from '../Genre.module.scss'
 
 export default async function MoviesFilter({
   params,
@@ -27,7 +27,7 @@ export default async function MoviesFilter({
       {filteredMovies.length > 0 ? (
         <MoviesList allMovies={filteredMovies} />
       ) : (
-        <p className="genre__wrapper-message">Фильмы в этом жанре не найдены</p>
+        <p className={genreStyles['genre__wrapper-message']}>Фильмы в этом жанре не найдены</p>
       )}
     </>
   );

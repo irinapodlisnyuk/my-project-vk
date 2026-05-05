@@ -1,9 +1,12 @@
+@use "../../../app/scss/global/variables" as *;
+@use "../../../app/scss/global/mixins" as *;
+
 .genre__show {
   height: 56px;
   text-align: center;
 
   &-btn {
-    background-color: $montana !important;
+    background-color: rgba(106, 93, 194, 1)!important;
     box-shadow: none !important;
     height: 100% !important;
     padding: 0;
@@ -11,7 +14,6 @@
 
     @include vp-767 {
       width: 100%;
-      background-color: rgba(106, 93, 194, 1);
     }
 
     span {
@@ -20,10 +22,6 @@
 
     &:hover {
       background-color: $cornflower-blue !important;
-
-      @include vp-767 {
-        background-color: $slate-blue !important;
-      }
     }
 
     &:focus,

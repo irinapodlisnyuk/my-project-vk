@@ -4,8 +4,8 @@ import { Flex } from "antd";
 import MovieCard from "@/components/GenrePage/MoviesCard/MoviesCard";
 import { IMovie } from "@/models";
 import { Button } from "antd";
-import '../Genre.scss';
-import './Genre__show.scss';
+import genreStyles from '../Genre.module.scss'
+import showStyles from './Genre__show.module.scss'
 
 export default function MoviesList({ allMovies }: { allMovies: IMovie[] }) {
   const [visibleCount, setVisibleCount] = useState(10);
@@ -18,7 +18,6 @@ export default function MoviesList({ allMovies }: { allMovies: IMovie[] }) {
     };
     handleResize(); 
     
-    //  следим за изменением экрана
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -30,18 +29,18 @@ export default function MoviesList({ allMovies }: { allMovies: IMovie[] }) {
   
   return (
     <>
-      <Flex className="genre__movies-list">
+      <Flex className={genreStyles['genre__movies-list']}>
         {allMovies.slice(0, visibleCount).map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </Flex>
 
       {visibleCount < allMovies.length && (
-        <div className="genre__show">
+        <div className={showStyles['genre__show']}>
           <Button
             onClick={showMore}
             type="text"
-            className="genre__show-btn btn"
+             className={`${showStyles['genre__show-btn']} btn`}
           >
             Показать еще
           </Button>

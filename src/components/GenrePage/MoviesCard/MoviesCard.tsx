@@ -2,8 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { IMovie } from "@/models";
-import "../Genre.scss";
-import "./Movie-card.scss"
+import genreStyles from '../Genre.module.scss'
+import cardStyles from './Movie-card.module.scss'
+
 
 interface MovieCardProps {
   movie: IMovie;
@@ -11,8 +12,8 @@ interface MovieCardProps {
 
 const MoviesCard = ({ movie }: MovieCardProps) => {
   return (
-    <Link href={`/movie/${movie.id}`} className="genre__movie-item">
-      <div className="movie__card">
+    <Link href={`/movie/${movie.id}`} className={genreStyles['genre__movie-item']}>
+      <div className={cardStyles['movie__card']}>
         <Image
           src={movie.posterUrl || "/images/no-poster.webp"}
           alt={movie.title || "Постер"}
@@ -20,7 +21,7 @@ const MoviesCard = ({ movie }: MovieCardProps) => {
           height={336}
           sizes="(max-width: 768px) 50vw, 224px"
           style={{ objectFit: "cover", height: "auto", aspectRatio: "2 / 3" }}
-          className="movie__card-image"
+          className={cardStyles['movie__card-image']}
         />
       </div>
     </Link>

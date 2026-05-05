@@ -16,7 +16,6 @@
   color: $white !important;
   transition: background-color $transition-800 !important;
 
-
   -webkit-tap-highlight-color: transparent;
   @media (hover: hover) {
     &:hover {
@@ -24,7 +23,6 @@
     }
   }
 
-  
   &:focus-visible {
     outline: none;
   }

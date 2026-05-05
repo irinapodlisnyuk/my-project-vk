@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "../../../app/scss/global/variables" as *;
+@use "../../../app/scss/global/mixins" as *;
+
 .genre__card {
     width: 290px;
     height: 304px;

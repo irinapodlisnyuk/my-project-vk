@@ -3,6 +3,8 @@ import MovieFilter from "@/components/GenrePage/MoviesFilter/MoviesFilter"
 import { Icon } from "@/models/Icon";
 import { GENRE_MAP } from "@/utils/ru";
 import Link from "next/link";
+import genreStyles from '../../../components/GenrePage/Genre.module.scss'
+
 
 export default async function GenrePage({
   params,
@@ -15,15 +17,15 @@ export default async function GenrePage({
   const russianName = GENRE_MAP[genreKey] || genreKey;
 
   return (
-    <section className="genre">
+    <section className={genreStyles["genre"]}>
       <div className="container">
-        <div className="genre__wrapper">
-          <div className="genre__inner">
-            <Link href={`/genres`} className="genre__inner-link">
-              <div className="genre__icon">
+        <div className={genreStyles["genre__wrapper"]}>
+          <div className={genreStyles["genre__inner"]}>
+            <Link href={`/genres`} className={genreStyles["genre__inner-link"]}>
+              <div className={genreStyles["genre__icon"]}>
                 <Icon name="arrow-back" width={13} height={22} />
               </div>
-              <h1 className="genre__inner-title">
+              <h1 className={genreStyles["genre__inner-title"]}>
                 {russianName.charAt(0).toUpperCase() + russianName.slice(1)}
               </h1>
             </Link>
