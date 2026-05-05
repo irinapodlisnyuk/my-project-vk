@@ -3,7 +3,8 @@ import { BASE_URL } from "@/api/config";
 import { GENRE_MAP } from "@/utils/ru";
 import Image from "next/image";
 import Link from "next/link";
-import '../Genres.scss'
+import '../Genres.scss';
+import './Genre__card.scss'
 
 interface GenreProps {
   name: string;
@@ -15,8 +16,6 @@ export default function GenresCard({ name, backdropUrl, priority }: GenreProps) 
   const genreKey = name.replace(/[\s-]/g, "");
 
   const russianName = GENRE_MAP[genreKey] || name;
-
- // const imageSrc = backdropUrl || `/images/${genreKey}.png`;
 
  const imageSrc = backdropUrl 
     ? (backdropUrl.startsWith('http') ? backdropUrl : `${BASE_URL}${backdropUrl}`)

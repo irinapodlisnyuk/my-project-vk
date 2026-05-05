@@ -13,7 +13,7 @@ export default async function MoviesFilter({
 
   const allMovies = await getMovies([""]);
 
-  // 2. Фильтруем по жанру и СОРТИРУЕМ ПО РЕЙТИНГУ 
+  // 2. Фильтруем по жанру и сортируем
   const filteredMovies = allMovies
     .filter((movie) =>
       movie.genres.some(

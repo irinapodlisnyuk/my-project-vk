@@ -42,8 +42,9 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
           width={224}
           height={336}
           priority={index < 2}
-          unoptimized
-          style={{ height: "auto" }}
+          sizes="(max-width: 768px) 50vw, 224px"
+          quality={75}
+          style={{ width: "100%", height: "auto" }}
         />
       </div>
     </Link>
@@ -68,7 +69,7 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
           </Swiper>
         ) : (
           <div className="movie-top__ssr-placeholder">
-            {uniqueMovies.slice(0, 4).map(renderCard)}
+            {uniqueMovies.slice(0, 10).map(renderCard)}
           </div>
         )}
       </div>

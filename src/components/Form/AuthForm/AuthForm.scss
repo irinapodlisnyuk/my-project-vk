@@ -161,10 +161,12 @@
   border-radius: 50%;
   top: 0;
   right: -72px;
+    border: none;
 
   @include vp-767 {
     top: 8px;
     right: 8px;
+    //border: none;
   }
   &:hover {
     color: $cornflower-blue;

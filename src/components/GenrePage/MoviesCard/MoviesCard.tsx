@@ -2,7 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { IMovie } from "@/models";
-import '../Genre.scss';
+import "../Genre.scss";
+import "./Movie-card.scss"
 
 interface MovieCardProps {
   movie: IMovie;
@@ -17,8 +18,8 @@ const MoviesCard = ({ movie }: MovieCardProps) => {
           alt={movie.title || "Постер"}
           width={224}
           height={336}
-          unoptimized
-          style={{ objectFit: "cover",  height: "auto" }} 
+          sizes="(max-width: 768px) 50vw, 224px"
+          style={{ objectFit: "cover", height: "auto", aspectRatio: "2 / 3" }}
           className="movie__card-image"
         />
       </div>

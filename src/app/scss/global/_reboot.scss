@@ -6,11 +6,12 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
 html {
   width: 100%;
+  box-sizing: border-box;
 }
 
 body {
@@ -35,6 +36,7 @@ body {
   position: relative; // Добавь это для корректного позиционирования кнопок
 
   main {
+    min-height: 100vh;
     flex: 1 0 auto; // Контент растягивается, прижимая футер
     padding-top: 96px;
 
@@ -59,6 +61,8 @@ svg {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
+  border-style: none;
+  display: block; /* Убирает лишний отступ снизу */
 }
 
 a {

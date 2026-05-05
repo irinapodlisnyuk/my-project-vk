@@ -5,6 +5,7 @@ import MovieCard from "@/components/GenrePage/MoviesCard/MoviesCard";
 import { IMovie } from "@/models";
 import { Button } from "antd";
 import '../Genre.scss';
+import './Genre__show.scss';
 
 export default function MoviesList({ allMovies }: { allMovies: IMovie[] }) {
   const [visibleCount, setVisibleCount] = useState(10);

@@ -15,7 +15,6 @@ export default function GenresGrid({ genres, movies }: GenresGridProps) {
   const observerTarget = useRef(null);
 
   useEffect(() => {
-    // Создаем наблюдатель
     const observer = new IntersectionObserver(
       (entries) => {
         // Если "маячок" внизу экрана виден и есть что еще грузить
