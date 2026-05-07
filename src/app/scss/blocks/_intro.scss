@@ -8,6 +8,7 @@
 
   @include vp-1023 {
     padding: 0;
+    min-height: auto;
   }
 
   @include vp-767 {
@@ -85,7 +86,7 @@
       max-width: 120px;
 
       @include vp-767 {
-        max-width: auto;
+        max-width: 110px;
         font-size: 14px;
         line-height: 20px;
       }
