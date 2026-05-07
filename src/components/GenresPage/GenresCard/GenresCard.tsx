@@ -3,28 +3,34 @@ import { BASE_URL } from "@/api/config";
 import { GENRE_MAP } from "@/utils/ru";
 import Image from "next/image";
 import Link from "next/link";
-import '../Genres.scss';
-import './Genre__card.scss'
+import "../Genres.scss";
+import "./Genre__card.scss";
 
 interface GenreProps {
   name: string;
-  backdropUrl?: string; 
-  priority?: boolean; 
+  backdropUrl?: string;
+  priority?: boolean;
 }
 
-export default function GenresCard({ name, backdropUrl, priority }: GenreProps) {
+export default function GenresCard({
+  name,
+  backdropUrl,
+  priority,
+}: GenreProps) {
   const genreKey = name.replace(/[\s-]/g, "");
 
   const russianName = GENRE_MAP[genreKey] || name;
 
- const imageSrc = backdropUrl 
-    ? (backdropUrl.startsWith('http') ? backdropUrl : `${BASE_URL}${backdropUrl}`)
+  const imageSrc = backdropUrl
+    ? backdropUrl.startsWith("http")
+      ? backdropUrl
+      : `${BASE_URL}${backdropUrl}`
     : `${BASE_URL}/images/${genreKey.toLowerCase()}.png`; // 👈 Запрос пойдет на сервер Skillbox
 
   return (
     <Link href={`/genres/${genreKey.toLowerCase()}`} className="genre__link">
       <div className="genre__card">
-        <Image 
+        <Image
           className="genre__card-image"
           src={imageSrc}
           alt={russianName}
@@ -36,7 +42,7 @@ export default function GenresCard({ name, backdropUrl, priority }: GenreProps) 
             const target = e.currentTarget as HTMLImageElement;
             target.src = "/images/no-poster.webp";
           }}
-          style={{ width: '100%', height: 'auto' }}
+          style={{ width: "100%", height: "auto", display: "block" }}
         />
         <span className="genre__card-title">
           {russianName.charAt(0).toUpperCase() +

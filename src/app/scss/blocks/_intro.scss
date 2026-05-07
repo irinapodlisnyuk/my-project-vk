@@ -127,7 +127,7 @@
       margin: 0 0 44px;
 
       @include vp-767 {
-       // width: 335px;
+        // width: 335px;
         font-size: 18px;
         line-height: 24px;
         margin: 0 0 20px;
@@ -270,9 +270,10 @@
 
   &__image {
     border-radius: 16px;
-    aspect-ratio: 680 / 552;
-    width: 100%;
-    height: auto;
+    // aspect-ratio: 680 / 552;
+    width: 100% !important;
+    height: auto !important;
     display: block;
+    object-fit: cover;
   }
 }

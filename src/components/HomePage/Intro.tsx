@@ -45,7 +45,6 @@ export const Intro = ({ initialMovie, movieId }: IntroProps) => {
             height={552}
             style={{ width: "100%", height: "auto" }}
             sizes="(max-width: 768px) 100vw, 680px"
-            fetchPriority="high"
             quality={65}
           />
         </div>

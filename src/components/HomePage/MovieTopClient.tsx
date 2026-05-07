@@ -16,6 +16,8 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  
+
   //  Оставляем только фильмы с уникальными id
   const uniqueMovies = useMemo(() => {
     const seen = new Set();

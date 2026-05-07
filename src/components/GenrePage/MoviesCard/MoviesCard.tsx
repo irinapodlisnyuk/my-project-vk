@@ -20,7 +20,7 @@ const MoviesCard = ({ movie }: MovieCardProps) => {
           width={224}
           height={336}
           sizes="(max-width: 768px) 50vw, 224px"
-          style={{ objectFit: "cover", height: "auto", aspectRatio: "2 / 3" }}
+          style={{ width: "100%", objectFit: "cover", height: "auto"}}
           className={cardStyles['movie__card-image']}
         />
       </div>
