@@ -87,7 +87,12 @@ export const TrailerModal = ({
   }, [isOpen, trailerUrl, title]);
 
   const togglePlay = () => {
-    if (playerRef.current) {
+    // Добавляем проверку безопасности
+    if (
+      isReady &&
+      playerRef.current &&
+      typeof playerRef.current.getPlayerState === "function"
+    ) {
       const state = playerRef.current.getPlayerState();
       if (state === 1) playerRef.current.pauseVideo();
       else playerRef.current.playVideo();
@@ -106,16 +111,21 @@ export const TrailerModal = ({
     >
       <div className="trailer__wrapper">
         <div className="trailer__video-container">
-          <div
-            ref={containerRef}
-            className="trailer__iframe-target"
-          />
+          <div ref={containerRef} className="trailer__iframe-target" />
         </div>
 
         {/* Прозрачный блок поверх для блокировки кликов */}
         <div className="trailer__overlay" onClick={togglePlay} />
 
-        <button className="trailer__play-btn" onClick={togglePlay}>
+        <button
+          className="trailer__play-btn"
+          onClick={togglePlay}
+          disabled={!isReady}
+          style={{
+            opacity: isReady ? 1 : 0.5,
+            cursor: isReady ? "pointer" : "wait",
+          }}
+        >
           <div className="trailer__play-icon">
             {isPlaying ? (
               <Icon

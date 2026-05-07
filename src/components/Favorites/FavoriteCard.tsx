@@ -23,7 +23,7 @@ export const FavoriteCard = ({ movie, priority, user }: FavoriteCardProps) => {
           height={336}
           priority={priority}
           unoptimized
-          style={{ objectFit: "cover", height: "auto" }}
+          style={{ width: "100%", height: "auto", objectFit: "cover" }} 
           className="favorite__card-image"
         />
       <DeleteFavorite user={user} movieId={movie.id.toString()} />

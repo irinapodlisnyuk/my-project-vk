@@ -44,7 +44,7 @@ export const SearchResults = ({ query, setQuery }: SearchResultsProps) => {
           alt={movie.title}
           width={158}
           height={206}
-          style={{ objectFit: "cover", height: 'auto' }}
+          style={{ width: "100%", height: "auto", objectFit: "cover" }} 
         />
         <div className="search__results-info">
           <IntroInfo movie={movie} />
