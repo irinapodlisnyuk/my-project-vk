@@ -21,7 +21,7 @@ export const getMovieTop = async (): Promise<Movies> => {
 //	 Получение случайного фильма
 export const getRandomMovie = async (): Promise<IMovie> => {
   const url = `${BASE_URL}/movie/random?language=ru`;
-  const response = await fetch(url,  { next: { revalidate: 0 } });
+  const response = await fetch(url,  { next: { revalidate: 3600 } });
   if (!response.ok) throw new Error("Ошибка загрузки случайного фильма");
   return await response.json();
 };
