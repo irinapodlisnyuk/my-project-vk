@@ -86,3 +86,22 @@ export const searchMovies = async (title: string): Promise<Movies> => {
   if (!response.ok) throw new Error("Ошибка поиска");
   return await response.json();
 };
+
+
+export async function getAllMovieIds(): Promise<string[]> {
+  try {
+    // Запрашиваем топ-фильмы или первые 100 фильмов, чтобы сгенерировать для них страницы
+    const response = await fetch(`${BASE_URL}/movie?limit=100`);
+    
+    if (!response.ok) {
+      return [];
+    }
+
+    const movies = await response.json();
+  
+    return movies.map((movie: { id: number }) => String(movie.id));
+  } catch (error) {
+    console.error("Ошибка при получении ID фильмов:", error);
+    return []; 
+  }
+}
