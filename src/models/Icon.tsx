@@ -1,3 +1,5 @@
+import sprite from "@/public/images/sprite.svg"; 
+
 interface IconProps {
   name: string; 
   className?: string;
@@ -19,7 +21,7 @@ export const Icon = ({
       height={height} 
       aria-hidden="true"
     >
-      <use href={`/my-project-vk/images/sprite.svg#${name}`} /> 
+       <use href={`${sprite}#${name}`} /> 
     </svg>
   );
 };
