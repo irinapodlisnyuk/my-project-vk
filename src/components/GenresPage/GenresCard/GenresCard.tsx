@@ -34,15 +34,22 @@ export default function GenresCard({
           className="genre__card-image"
           src={imageSrc}
           alt={russianName}
-          priority={priority} //
+          priority={priority}
           width={290}
           height={220}
           unoptimized
           onError={(e) => {
-            const target = e.currentTarget as HTMLImageElement;
-            target.src = "/images/no-poster.webp";
+            const target = e.currentTarget;
+            if (target.src !== "/images/no-poster.webp") {
+              target.src = "/images/no-poster.webp";
+            }
           }}
-          style={{ width: "100%", height: "auto", display: "block" }}
+          style={{
+            width: "100%",
+            height: "auto",
+            display: "block",
+            aspectRatio: "290 / 220",
+          }}
         />
         <span className="genre__card-title">
           {russianName.charAt(0).toUpperCase() +

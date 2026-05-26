@@ -115,6 +115,7 @@
 
   &:hover {
     .auth-form__theme-btn {
+      display: none;
      opacity: 1 !important;
      transition: opacity $transition-800;
     }

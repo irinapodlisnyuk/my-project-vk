@@ -2,6 +2,7 @@
 @use "../../../app/scss/global/mixins" as *;
 
 .auth-form__theme-btn {
+  display: none;
   opacity: 0 !important;
   background-color: $grey !important;
 
