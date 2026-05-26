@@ -4,7 +4,20 @@ import { Icon } from "@/models/Icon";
 import { GENRE_MAP } from "@/utils/ru";
 import Link from "next/link";
 import genreStyles from '../../../components/GenrePage/Genre.module.scss'
+import { getGenres } from "@/api/GenresApi";
 
+export async function generateStaticParams() {
+  try {
+    const genres = await getGenres(); // Получаем массив строк-жанров с сервера Skillbox
+    
+    return genres.map((genreName) => ({
+      name: genreName,
+    }));
+  } catch (error) {
+    console.error("Ошибка при генерации статических страниц для жанров:", error);
+    return [];
+  }
+}
 
 export default async function GenrePage({
   params,
