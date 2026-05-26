@@ -19,7 +19,7 @@ export const Icon = ({
       height={height} 
       aria-hidden="true"
     >
-      <use href={`/images/sprite.svg#${name}`} />
+      <use href={`/my-project-vk/images/sprite.svg#${name}`} /> 
     </svg>
   );
 };
