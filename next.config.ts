@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Добавляем эти две строчки (название вашего репозитория с косой чертой)
-  basePath: "/my-project-vk",
-  assetPrefix: "/my-project-vk/",
-
   images: {
     qualities: [65, 75],
     remotePatterns: [
