@@ -15,8 +15,8 @@ export const Icon = ({
 }: IconProps) => {
   return (
     <svg className={className} width={width} height={height} aria-hidden="true">
-      {/* <use href={`${sprite}#${name}`} /> */}
-        <use href={`images/sprite.svg#${name}`} />
+      {/* Прямой абсолютный путь с префиксом репозитория гарантирует работу на любой вложенной странице */}
+      <use href={`/my-project-vk/images/sprite.svg#${name}`} />
     </svg>
   );
 };
