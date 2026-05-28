@@ -26,6 +26,8 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
     });
   }, [movies]);
 
+  const basePath = "/my-project-vk";
+
   const renderCard = (movie: IMovie, index: number) => (
     <Link
       href={`/movie/${movie.id}`}
@@ -39,15 +41,23 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
           src={
             movie.posterUrl?.trim()
               ? movie.posterUrl
-              : "/images/no-poster.webp"
+              : `${basePath}/images/no-poster.webp`
           }
           alt={movie.title || "Постер"}
+          unoptimized
           width={224}
           height={336}
           priority={index < 2}
           sizes="(max-width: 768px) 50vw, 224px"
           quality={75}
           style={{ width: "100%", height: "auto" }}
+          onError={(e) => {
+            const target = e.currentTarget;
+            const fallbackSrc = `${basePath}/images/no-poster.webp`;
+            if (target.src !== fallbackSrc) {
+              target.src = fallbackSrc;
+            }
+          }}
         />
       </div>
     </Link>

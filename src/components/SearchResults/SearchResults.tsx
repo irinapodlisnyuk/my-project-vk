@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IntroInfo } from "../HomePage/IntroInfo";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import './Search-results.scss';
+import "./Search-results.scss";
 
 interface SearchResultsProps {
   query: string;
@@ -20,6 +20,8 @@ export const SearchResults = ({ query, setQuery }: SearchResultsProps) => {
   const { searchResults, status } = useSelector(
     (state: RootState) => state.movies,
   );
+
+  const basePath = "/my-project-vk";
 
   const handleReset = () => {
     setQuery("");
@@ -40,11 +42,18 @@ export const SearchResults = ({ query, setQuery }: SearchResultsProps) => {
       <div className="search__results-content">
         <Image
           className="search__results-icon"
-          src={movie.posterUrl || "images/no-poster.webp"}
+          src={movie.posterUrl || `${basePath}/images/no-poster.webp`}
           alt={movie.title}
           width={158}
           height={206}
-          style={{ width: "100%", height: "auto", objectFit: "cover" }} 
+          style={{ width: "100%", height: "auto", objectFit: "cover" }}
+          onError={(e) => {
+            const target = e.currentTarget;
+            const fallbackSrc = `${basePath}/images/no-poster.webp`;
+            if (target.src !== fallbackSrc) {
+              target.src = fallbackSrc;
+            }
+          }}
         />
         <div className="search__results-info">
           <IntroInfo movie={movie} />
@@ -55,37 +64,37 @@ export const SearchResults = ({ query, setQuery }: SearchResultsProps) => {
   );
 
   return (
-<>
-    <div className="search__results-overlay" onClick={handleReset} />
+    <>
+      <div className="search__results-overlay" onClick={handleReset} />
 
-    <div className="search__results">
-      {status === "loading" && (
-        <div className="search-loading">Загрузка...</div>
-      )}
-      {status !== "idle" && searchResults.length === 0 && (
-        <div className="search__results-no">Ничего не найдено</div>
-      )}
+      <div className="search__results">
+        {status === "loading" && (
+          <div className="search-loading">Загрузка...</div>
+        )}
+        {status !== "idle" && searchResults.length === 0 && (
+          <div className="search__results-no">Ничего не найдено</div>
+        )}
 
-      <div className="search__results-mobile">
-        <Swiper spaceBetween={16} slidesPerView={"auto"}>
-          {searchResults.map((movie) => (
-            <SwiperSlide key={movie.id} className="search__results-item">
-              {renderCard(movie)}
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+        <div className="search__results-mobile">
+          <Swiper spaceBetween={16} slidesPerView={"auto"}>
+            {searchResults.map((movie) => (
+              <SwiperSlide key={movie.id} className="search__results-item">
+                {renderCard(movie)}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      <div className="search__results-desktop">
-        <div className="search__results-list">
-          {searchResults.map((movie) => (
-            <div key={movie.id} className="search__results-item">
-              {renderCard(movie)}
-            </div>
-          ))}
+        <div className="search__results-desktop">
+          <div className="search__results-list">
+            {searchResults.map((movie) => (
+              <div key={movie.id} className="search__results-item">
+                {renderCard(movie)}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
