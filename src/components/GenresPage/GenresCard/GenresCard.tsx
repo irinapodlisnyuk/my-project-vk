@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "../Genres.scss";
 import "./Genre__card.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface GenreProps {
   name: string;
@@ -29,6 +29,11 @@ export default function GenresCard({
     : `${BASE_URL}/images/${genreKey.toLowerCase()}.png`; // 👈 Запрос пойдет на сервер Skillbox
 
   const [currentSrc, setCurrentSrc] = useState(imageSrc);
+
+  useEffect(() => {
+    setCurrentSrc(imageSrc);
+  }, [imageSrc]);
+
   return (
     <Link
       href={`/genres/${encodeURIComponent(genreUrlParam)}`}
