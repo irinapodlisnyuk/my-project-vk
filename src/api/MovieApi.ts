@@ -91,7 +91,7 @@ export const searchMovies = async (title: string): Promise<Movies> => {
 export async function getAllMovieIds(): Promise<string[]> {
   try {
     // Запрашиваем топ-фильмы или первые 100 фильмов, чтобы сгенерировать для них страницы
-    const response = await fetch(`${BASE_URL}/movie?limit=100`);
+    const response = await fetch(`${BASE_URL}/movie?limit=1000`);
     
     if (!response.ok) {
       return [];
