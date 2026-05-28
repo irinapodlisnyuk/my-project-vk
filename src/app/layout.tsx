@@ -16,7 +16,7 @@ const playFont = localFont({
 
 export const metadata: Metadata = {
   icons: {
-    icon: "/favicon.svg", 
+    icon:  "/my-project-vk/favicon.svg",
   },
   title: "VK Маруся — Смотреть фильмы онлайн",
   description: "Кинотеатр VK Маруся: топ 10 фильмов, жанры и удобный поиск",
