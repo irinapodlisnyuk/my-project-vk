@@ -18,8 +18,8 @@ export const LoginForm: FC = () => {
   const loginMutation = useMutation({
     mutationFn: () => loginUser(email, password),
     onSuccess(data) {
-      if (data) {
-        localStorage.setItem("token", "true");
+      if (data && data.success) {
+        localStorage.setItem("isAuth", "true"); // Используем понятный флаг вместо фейкового токена
         queryClient.invalidateQueries({ queryKey: ["users", "me"] });
         router.push("/");
       }

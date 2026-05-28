@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export', 
-  basePath: '/my-project-vk', 
+  basePath: '/my-project-vk',
+  trailingSlash: true, 
   images: {
     unoptimized: true, 
     remotePatterns: [
