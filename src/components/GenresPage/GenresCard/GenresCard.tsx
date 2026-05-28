@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "../Genres.scss";
 import "./Genre__card.scss";
+import { useState } from "react";
 
 interface GenreProps {
   name: string;
@@ -27,26 +28,24 @@ export default function GenresCard({
       : `${BASE_URL}${backdropUrl}`
     : `${BASE_URL}/images/${genreKey.toLowerCase()}.png`; // 👈 Запрос пойдет на сервер Skillbox
 
+  const [currentSrc, setCurrentSrc] = useState(imageSrc);
   return (
     <Link
       href={`/genres/${genreKey.toLowerCase()}`}
       className="genre__link"
-      prefetch={false}
+      prefetch={true}
     >
       <div className="genre__card">
         <Image
           className="genre__card-image"
-          src={imageSrc}
+          src={currentSrc}
           alt={russianName}
           priority={priority}
           width={290}
           height={220}
           unoptimized
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (target.src !== "images/no-poster.webp") {
-              target.src = "images/no-poster.webp";
-            }
+          onError={() => {
+            setCurrentSrc("/images/no-poster.webp");
           }}
           style={{
             width: "100%",
