@@ -1,31 +1,21 @@
-import MovieFilter from "@/components/GenrePage/MoviesFilter/MoviesFilter"
+"use client";
+
+import MovieFilter from "@/components/GenrePage/MoviesFilter/MoviesFilter";
 import { Icon } from "@/models/Icon";
 import { GENRE_MAP } from "@/utils/ru";
 import Link from "next/link";
-import genreStyles from '../../../components/GenrePage/Genre.module.scss'
-import { getGenres } from "@/api/GenresApi";
+import { use } from "react";
+import genreStyles from '../../../components/GenrePage/Genre.module.scss';
 
-export async function generateStaticParams() {
-  try {
-    const genres = await getGenres(); // Получаем массив строк-жанров с сервера Skillbox
-    
-    return genres.map((genreName) => ({
-      name: genreName,
-    }));
-  } catch (error) {
-    console.error("Ошибка при генерации статических страниц для жанров:", error);
-    return [];
-  }
+interface Props {
+  params: Promise<{ name: string }>;
 }
 
-export default async function GenrePage({
-  params,
-}: {
-  params: Promise<{ name: string }>;
-}) {
-  const { name } = await params;
+export default function GenrePageClient({ params }: Props) {
+  // Безопасно распаковываем асинхронные параметры Next.js на клиенте
+  const resolvedParams = use(params);
+  const name = resolvedParams.name || "";
   const genreKey = decodeURIComponent(name).toLowerCase();
-
   const russianName = GENRE_MAP[genreKey] || genreKey;
 
   return (
