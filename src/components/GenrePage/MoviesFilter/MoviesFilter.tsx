@@ -8,7 +8,7 @@ export default async function MoviesFilter({
   params: Promise<{ name: string }>;
 }) {
   const { name } = await params;
-  const genreKey = decodeURIComponent(name).toLowerCase();
+  const genreKey = decodeURIComponent(name).toLowerCase().replace(/[\s-]/g, "");
 
 
   const allMovies = await getMovies([""]);

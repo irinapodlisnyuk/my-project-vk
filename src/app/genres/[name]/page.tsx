@@ -5,7 +5,6 @@ import Link from "next/link";
 import genreStyles from '../../../components/GenrePage/Genre.module.scss'
 import { getGenres } from "@/api/GenresApi";
 
-// ⚠️ Запрещаем искать страницы динамически на лету, так как GitHub Pages — это голая статика
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
