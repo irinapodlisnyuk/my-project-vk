@@ -1,27 +1,22 @@
-import sprite from "@/public/images/sprite.svg"; 
+//import sprite from "./src/public/images/sprite.svg";
 
 interface IconProps {
-  name: string; 
+  name: string;
   className?: string;
   width?: number;
   height?: number;
 }
 
-
-export const Icon = ({ 
-  name, 
-  className, 
-  width = 32, 
-  height = 32 
+export const Icon = ({
+  name,
+  className,
+  width = 32,
+  height = 32,
 }: IconProps) => {
   return (
-    <svg 
-      className={className} 
-      width={width} 
-      height={height} 
-      aria-hidden="true"
-    >
-       <use href={`${sprite}#${name}`} /> 
+    <svg className={className} width={width} height={height} aria-hidden="true">
+      {/* <use href={`${sprite}#${name}`} /> */}
+        <use href={`/images/sprite.svg#${name}`} />
     </svg>
   );
 };
