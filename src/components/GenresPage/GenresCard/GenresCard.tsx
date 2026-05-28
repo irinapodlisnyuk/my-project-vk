@@ -18,9 +18,9 @@ export default function GenresCard({
   backdropUrl,
   priority,
 }: GenreProps) {
-  const genreKey = name.replace(/[\s-]/g, "");
-
+  const genreKey = name.replace(/[\s-]/g, "").toLowerCase();
   const russianName = GENRE_MAP[genreKey] || name;
+  const genreUrlParam = name.toLowerCase();
 
   const imageSrc = backdropUrl
     ? backdropUrl.startsWith("http")
@@ -31,7 +31,7 @@ export default function GenresCard({
   const [currentSrc, setCurrentSrc] = useState(imageSrc);
   return (
     <Link
-      href={`/genres/${genreKey.toLowerCase()}`}
+      href={`/genres/${encodeURIComponent(genreUrlParam)}`}
       className="genre__link"
       prefetch={true}
     >
@@ -45,7 +45,8 @@ export default function GenresCard({
           height={220}
           unoptimized
           onError={() => {
-            setCurrentSrc("/images/no-poster.webp");
+            const basePath = "/my-project-vk";
+            setCurrentSrc(`${basePath}/images/no-poster.webp`);
           }}
           style={{
             width: "100%",
