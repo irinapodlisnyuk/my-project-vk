@@ -5,12 +5,16 @@ import Link from "next/link";
 import genreStyles from '../../../components/GenrePage/Genre.module.scss'
 import { getGenres } from "@/api/GenresApi";
 
+// ⚠️ Запрещаем искать страницы динамически на лету, так как GitHub Pages — это голая статика
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   try {
-    const genres = await getGenres(); // Получаем массив строк-жанров с сервера Skillbox
+    const genres = await getGenres(); 
     
     return genres.map((genreName) => ({
-      name: genreName,
+   
+      name: String(genreName).toLowerCase(), 
     }));
   } catch (error) {
     console.error("Ошибка при генерации статических страниц для жанров:", error);
@@ -24,9 +28,10 @@ export default async function GenrePage({
   params: Promise<{ name: string }>;
 }) {
   const { name } = await params;
+  
+  // Декодируем и приводим к нижнему регистру, чтобы правильно сопоставить ключ с GENRE_MAP
   const genreKey = decodeURIComponent(name).toLowerCase();
-
-  const russianName = GENRE_MAP[genreKey] || genreKey;
+  const russianName = GENRE_MAP[genreKey.replace(/[\s-]/g, "")] || genreKey;
 
   return (
     <section className={genreStyles["genre"]}>
@@ -43,6 +48,7 @@ export default async function GenrePage({
             </Link>
           </div>
 
+          {/* Компонент фильтрации подхватит params, распарсит его на клиенте и отрендерит фильмы */}
           <MovieFilter params={params} />
         </div>
       </div>
