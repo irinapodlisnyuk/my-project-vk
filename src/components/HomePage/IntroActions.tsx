@@ -64,7 +64,7 @@ export const IntroActions = ({
 
         {!isMoviePage && (
           <Link
-            href={`/my-project-vk/movie/${movie.id}`}
+            href={`/movie/${movie.id}`}
             className="intro__film-link btn"
             prefetch={false}
           >

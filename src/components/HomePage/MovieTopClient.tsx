@@ -26,14 +26,12 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
     });
   }, [movies]);
 
-  const basePath = process.env.__NEXT_ROUTER_BASEPATH || "";
-  
   const renderCard = (movie: IMovie, index: number) => (
     <Link
       href={`/movie/${movie.id}`}
       className="movie-top__card"
       key={movie.id}
-      prefetch={false}
+      prefetch={true}
     >
       <span className="movie-top__number">{index + 1}</span>
       <div className="movie-top__image">
@@ -41,7 +39,7 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
           src={
             movie.posterUrl?.trim()
               ? movie.posterUrl
-              : `${basePath}/images/no-poster.webp`
+              : "/images/no-poster.webp"
           }
           alt={movie.title || "Постер"}
           width={224}
