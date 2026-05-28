@@ -31,7 +31,7 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
       href={`/movie/${movie.id}`}
       className="movie-top__card"
       key={movie.id}
-      prefetch={true}
+      prefetch={false}
     >
       <span className="movie-top__number">{index + 1}</span>
       <div className="movie-top__image">
