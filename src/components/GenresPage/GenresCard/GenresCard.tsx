@@ -28,7 +28,11 @@ export default function GenresCard({
     : `${BASE_URL}/images/${genreKey.toLowerCase()}.png`; // 👈 Запрос пойдет на сервер Skillbox
 
   return (
-    <Link href={`/genres/${genreKey.toLowerCase()}`} className="genre__link">
+    <Link
+      href={`/genres/${genreKey.toLowerCase()}`}
+      className="genre__link"
+      prefetch={false}
+    >
       <div className="genre__card">
         <Image
           className="genre__card-image"

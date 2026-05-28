@@ -14,6 +14,8 @@ const MoviesCard = ({ movie }: MovieCardProps) => {
     <Link
       href={`/movie/${movie.id}`}
       className={genreStyles["genre__movie-item"]}
+      prefetch={false}
+      
     >
       <div className={cardStyles["movie__card"]}>
         <Image
