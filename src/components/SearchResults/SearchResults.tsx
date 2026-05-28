@@ -40,7 +40,7 @@ export const SearchResults = ({ query, setQuery }: SearchResultsProps) => {
       <div className="search__results-content">
         <Image
           className="search__results-icon"
-          src={movie.posterUrl || "/images/no-poster.webp"}
+          src={movie.posterUrl || "images/no-poster.webp"}
           alt={movie.title}
           width={158}
           height={206}

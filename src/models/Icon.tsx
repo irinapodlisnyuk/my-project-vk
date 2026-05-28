@@ -16,7 +16,7 @@ export const Icon = ({
   return (
     <svg className={className} width={width} height={height} aria-hidden="true">
       {/* <use href={`${sprite}#${name}`} /> */}
-        <use href={`/images/sprite.svg#${name}`} />
+        <use href={`images/sprite.svg#${name}`} />
     </svg>
   );
 };

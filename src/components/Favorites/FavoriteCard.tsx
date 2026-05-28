@@ -17,7 +17,7 @@ export const FavoriteCard = ({ movie, priority, user }: FavoriteCardProps) => {
     <Link href={`/movie/${movie.id}`} className="favorite__movie-item">
       <div className="favorite__card">
         <Image
-          src={movie.posterUrl || "/images/no-poster.webp"}
+          src={movie.posterUrl || "images/no-poster.webp"}
           alt={movie.title || "Постер"}
           width={224}
           height={336}

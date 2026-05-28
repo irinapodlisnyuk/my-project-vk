@@ -40,8 +40,8 @@ export default function GenresCard({
           unoptimized
           onError={(e) => {
             const target = e.currentTarget;
-            if (target.src !== "/images/no-poster.webp") {
-              target.src = "/images/no-poster.webp";
+            if (target.src !== "images/no-poster.webp") {
+              target.src = "images/no-poster.webp";
             }
           }}
           style={{
