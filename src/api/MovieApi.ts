@@ -21,7 +21,7 @@ export const getMovieTop = async (): Promise<Movies> => {
 //	 Получение случайного фильма
 export const getRandomMovie = async (): Promise<IMovie> => {
   const url = `${BASE_URL}/movie/random?language=ru`;
-  const response = await fetch(url,  { next: { revalidate: 3600 } });
+  const response = await fetch(url);
   if (!response.ok) throw new Error("Ошибка загрузки случайного фильма");
   return await response.json();
 };
@@ -35,8 +35,6 @@ export const getMovieId = async (movieId: string): Promise<IMovie> => {
   return {
     ...data,
     id: String(data.id),
-    //Исправляем опечатку года
-    // releaseYear: data.relaseYear
   };
 };
 
@@ -87,18 +85,34 @@ export const searchMovies = async (title: string): Promise<Movies> => {
   return await response.json();
 };
 
-
 export async function getAllMovieIds(): Promise<string[]> {
   try {
-    const response = await fetch(`${BASE_URL}/movie`);
+  
+    const [resMovies, resTop, resRandom] = await Promise.all([
+      fetch(`${BASE_URL}/movie?language=ru`),
+      fetch(`${BASE_URL}/movie/top10?language=ru`),
+      fetch(`${BASE_URL}/movie/random?language=ru`).catch(() => null),
+    ]);
     
-    if (!response.ok) {
-      return [];
+    const movies = resMovies && resMovies.ok ? await resMovies.json() : [];
+    const topMovies = resTop && resTop.ok ? await resTop.json() : [];
+    const randomMovie = resRandom && resRandom.ok ? await resRandom.json() : null;
+
+    // Сливаем все подборки в единый массив
+    const allMovies = [...movies, ...topMovies];
+    if (randomMovie) {
+      allMovies.push(randomMovie);
     }
 
-    const movies = await response.json();
-  
-    return movies.map((movie: { id: number }) => String(movie.id));
+    const uniqueIds = Array.from(
+      new Set(
+        allMovies
+          .filter((movie) => movie && movie.id)
+          .map((movie) => String(movie.id))
+      )
+    );
+
+    return uniqueIds;
   } catch (error) {
     console.error("Ошибка при получении ID фильмов:", error);
     return []; 
