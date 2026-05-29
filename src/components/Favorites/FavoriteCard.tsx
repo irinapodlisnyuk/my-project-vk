@@ -5,6 +5,7 @@ import { IMovie } from "@/models";
 import DeleteFavorite from "./DeleteFavorite";
 import { User } from "@/api/User";
 import "./Favorite__card.scss";
+import { useState } from "react";
 
 interface FavoriteCardProps {
   movie: IMovie;
@@ -13,15 +14,19 @@ interface FavoriteCardProps {
 }
 
 export const FavoriteCard = ({ movie, priority, user }: FavoriteCardProps) => {
-  const basePath = "/my-project-vk";
-
-  const currentSrc =
-    movie.posterUrl && movie.posterUrl.trim() !== ""
-      ? movie.posterUrl
-      : `${basePath}/images/no-poster.webp`;
+   const [isImageFailed, setIsImageFailed] = useState(false);
+   const basePath = "/my-project-vk";
+   const fallbackSrc = `${basePath}/images/no-poster.webp`;
+ 
+   const currentSrc =
+     movie.posterUrl && movie.posterUrl.trim() !== ""
+       ? movie.posterUrl
+       : fallbackSrc;
+ 
+       
   return (
     <Link
-      href={`/movie/${movie.id}`}
+      href={`/movie/${movie.id}/`}
       prefetch={true}
       className="favorite__movie-item"
     >
@@ -35,11 +40,9 @@ export const FavoriteCard = ({ movie, priority, user }: FavoriteCardProps) => {
           unoptimized
           style={{ width: "100%", height: "auto", objectFit: "cover" }}
           className="favorite__card-image"
-          onError={(e) => {
-            const target = e.currentTarget;
-            const fallbackSrc = `${basePath}/images/no-poster.webp`;
-            if (target.src !== fallbackSrc) {
-              target.src = fallbackSrc;
+        onError={() => {
+            if (!isImageFailed) {
+              setIsImageFailed(true);
             }
           }}
         />

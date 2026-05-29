@@ -16,10 +16,9 @@ export const useUser = () => {
   const { data, isSuccess, isFetching, error } = query;
 
   useEffect(() => {
-    // Если сервер ответил ошибкой (например, 401) или прислал пустой профиль
-    if ((error || (isSuccess && !data)) && !isFetching) {
+  if ((error || (isSuccess && !data)) && !isFetching) {
       if (typeof window !== 'undefined' && window.location.pathname === "/account") {
-        router.push("/"); // Выкидываем неавторизованного пользователя из ЛК
+        router.push("/"); 
       }
     }
   }, [data, isSuccess, isFetching, error, router]);

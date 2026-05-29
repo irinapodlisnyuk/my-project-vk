@@ -1,17 +1,40 @@
-import { getAllMovieIds, getMovieId } from "@/api/MovieApi";
+// import { getMovieId } from "@/api/MovieApi";
+// import MoviePage from "@/components/MoviePage/MoviePage";
+// import { notFound } from "next/navigation";
+
+// interface Props {
+//   params: Promise<{ id: string }>;
+// }
+
+// export default async function Movie({ params }: Props) {
+//   const { id } = await params;
+//   const movie = await getMovieId(id);
+
+//   if (!movie) {
+//     notFound();
+//   }
+
+//   return <MoviePage movie={movie} movieId={id} />;
+// }
+
+import { getAllMovieIds, getMovieId } from "@/api/MovieApi"; // Добавили импорт getAllMovieIds
 import MoviePage from "@/components/MoviePage/MoviePage";
 import { notFound } from "next/navigation";
 
+interface Props {
+  params: Promise<{ id: string }>;
+}
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const ids = await getAllMovieIds();
+  const ids = await getAllMovieIds(); // Вызываем получение всех ID, которые мы настроили в API
   return ids.map((id) => ({
-    id: String(id),
+    id: String(id), 
   }));
 }
 
-
-export default async function Movie({ params }: { params: Promise<{ id: string }> }) {
+export default async function Movie({ params }: Props) {
   const { id } = await params;
   const movie = await getMovieId(id);
 
@@ -21,28 +44,3 @@ export default async function Movie({ params }: { params: Promise<{ id: string }
 
   return <MoviePage movie={movie} movieId={id} />;
 }
-
-// interface Props {
-//   params: Promise<{ id: string }>;
-//   movie: IMovie;
-// }
-
-// export async function generateStaticParams() {
-//   const ids = await getAllMovieIds();
-
-//   return ids.map((id) => ({
-//     id: id,
-//   }));
-// }
-
-// export default async function Movie({ params }: Props) {
-//   const { id } = await params;
-
-//   const movie = await getMovieId(id);
-
-//   if (!movie) {
-//     notFound();
-//   }
-
-//   return <MoviePage movie={movie} movieId={id} />;
-// }
