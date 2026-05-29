@@ -26,32 +26,39 @@ export default function GenresCard({
     ? backdropUrl.startsWith("http")
       ? backdropUrl
       : `${BASE_URL}${backdropUrl}`
-    : `${BASE_URL}/images/${genreKey.toLowerCase()}.png`; // 👈 Запрос пойдет на сервер Skillbox
+    : `${BASE_URL}/images/${genreKey.toLowerCase()}.png`;
 
+  const [isImageFailed, setIsImageFailed] = useState(false);
   const [currentSrc, setCurrentSrc] = useState(imageSrc);
+  const [prevImageSrc, setPrevImageSrc] = useState(imageSrc);
 
-  useEffect(() => {
+  if (imageSrc !== prevImageSrc) {
+    setPrevImageSrc(imageSrc);
+    setIsImageFailed(false);
     setCurrentSrc(imageSrc);
-  }, [imageSrc]);
+  }
+
+  const fallbackSrc = "/my-project-vk/images/no-poster.webp";
 
   return (
     <Link
-      href={`/genres/${encodeURIComponent(genreUrlParam)}`}
+      href={`/genres/${encodeURIComponent(genreUrlParam)}/`}
       className="genre__link"
-      prefetch={true}
+      prefetch={false}
     >
       <div className="genre__card">
         <Image
           className="genre__card-image"
-          src={currentSrc}
+          src={isImageFailed ? fallbackSrc : currentSrc}
           alt={russianName}
           priority={priority}
           width={290}
           height={220}
           unoptimized
           onError={() => {
-            const basePath = "/my-project-vk";
-            setCurrentSrc(`${basePath}/images/no-poster.webp`);
+            if (!isImageFailed) {
+              setIsImageFailed(true);
+            }
           }}
           style={{
             width: "100%",
