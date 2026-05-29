@@ -5,31 +5,26 @@ import { useRouter } from "next/navigation";
 
 export const useUser = () => {
   
-  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-
-  //  проверка: токен существует, он не равен тексту "undefined" или "null" и он не пустой
-  const hasToken = !!token && token !== "undefined" && token !== "null" && token.trim() !== "";
-
   const query = useQuery({
     queryKey: ["users", "me"],
     queryFn: fetchMe,
     retry: false,
-    staleTime: 1000 * 60 * 5,
-    enabled: hasToken, 
+    staleTime: 1000 * 60 * 5, 
   });
 
   const router = useRouter();
   const { data, isSuccess, isFetching, error } = query;
 
   useEffect(() => {
+    // Если сервер ответил ошибкой (например, 401) или прислал пустой профиль
     if ((error || (isSuccess && !data)) && !isFetching) {
       if (typeof window !== 'undefined' && window.location.pathname === "/account") {
-        router.push("/");
+        router.push("/"); // Выкидываем неавторизованного пользователя из ЛК
       }
     }
   }, [data, isSuccess, isFetching, error, router]);
 
-return query;
+  return query;
   
 };
 
