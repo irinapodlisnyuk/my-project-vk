@@ -31,7 +31,7 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
 
   const renderCard = (movie: IMovie, index: number) => (
     <Link
-      href={`/movie/${movie.id}`}
+      href={`/movie/${movie.id}/`}
       className="movie-top__card"
       key={movie.id}
       prefetch={false}
