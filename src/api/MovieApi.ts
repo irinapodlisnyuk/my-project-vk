@@ -15,7 +15,13 @@ export const getMovieTop = async (): Promise<Movies> => {
   const url = `${BASE_URL}/movie/top10?language=ru`;
   const response = await fetch(url);
   if (!response.ok) throw new Error("Ошибка загрузки  с наивысшим рейтингом");
-  return await response.json();
+  // return await response.json();
+  const data = await response.json();
+
+  return data.map((item: Record<string, unknown>) => ({
+    ...(item as Record<string, unknown>),
+    id: String(item.id),
+  }));
 };
 
 //	 Получение случайного фильма
@@ -23,7 +29,12 @@ export const getRandomMovie = async (): Promise<IMovie> => {
   const url = `${BASE_URL}/movie/random?language=ru`;
   const response = await fetch(url);
   if (!response.ok) throw new Error("Ошибка загрузки случайного фильма");
-  return await response.json();
+  const data = await response.json();
+
+  return {
+    ...data,
+    id: String(data.id),
+  };
 };
 
 export const getMovieId = async (movieId: string): Promise<IMovie> => {
@@ -87,16 +98,16 @@ export const searchMovies = async (title: string): Promise<Movies> => {
 
 export async function getAllMovieIds(): Promise<string[]> {
   try {
-  
     const [resMovies, resTop, resRandom] = await Promise.all([
       fetch(`${BASE_URL}/movie?language=ru`),
       fetch(`${BASE_URL}/movie/top10?language=ru`),
       fetch(`${BASE_URL}/movie/random?language=ru`).catch(() => null),
     ]);
-    
+
     const movies = resMovies && resMovies.ok ? await resMovies.json() : [];
     const topMovies = resTop && resTop.ok ? await resTop.json() : [];
-    const randomMovie = resRandom && resRandom.ok ? await resRandom.json() : null;
+    const randomMovie =
+      resRandom && resRandom.ok ? await resRandom.json() : null;
 
     // Сливаем все подборки в единый массив
     const allMovies = [...movies, ...topMovies];
@@ -108,13 +119,13 @@ export async function getAllMovieIds(): Promise<string[]> {
       new Set(
         allMovies
           .filter((movie) => movie && movie.id)
-          .map((movie) => String(movie.id))
-      )
+          .map((movie) => String(movie.id)),
+      ),
     );
 
     return uniqueIds;
   } catch (error) {
     console.error("Ошибка при получении ID фильмов:", error);
-    return []; 
+    return [];
   }
 }
