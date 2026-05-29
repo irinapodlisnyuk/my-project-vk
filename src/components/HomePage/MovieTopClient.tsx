@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from "react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { IMovie } from "@/models";
+import LoaderPage from "../LoaderPage/LoaderPage";
 
 export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
   const [mounted, setMounted] = useState(false);
@@ -26,6 +27,8 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
     });
   }, [movies]);
 
+    const fallbackSrc = "/my-project-vk/images/no-poster.webp";
+
   const renderCard = (movie: IMovie, index: number) => (
     <Link
       href={`/movie/${movie.id}`}
@@ -39,7 +42,7 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
           src={
             movie.posterUrl?.trim()
               ? movie.posterUrl
-              : "/images/no-poster.webp"
+              : fallbackSrc
           }
           alt={movie.title || "Постер"}
           unoptimized
@@ -52,8 +55,16 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
         />
       </div>
     </Link>
+    
   );
 
+   if (!mounted) {
+    return (
+      <div className="movie-top__ssr-placeholder" style={{ opacity: 0, height: '336px' }}>
+        <LoaderPage />
+      </div>
+    );
+  }
   return (
     <>
       <div className="movie-top__mobile-only">
