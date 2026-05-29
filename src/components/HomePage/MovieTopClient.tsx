@@ -49,13 +49,6 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
           sizes="(max-width: 768px) 50vw, 224px"
           quality={75}
           style={{ width: "100%", height: "auto" }}
-          onError={(e) => {
-            const target = e.currentTarget;
-            const fallbackSrc = "/images/no-poster.webp";
-            if (target.src !== fallbackSrc) {
-              target.src = fallbackSrc;
-            }
-          }}
         />
       </div>
     </Link>
