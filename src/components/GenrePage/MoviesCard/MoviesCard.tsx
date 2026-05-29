@@ -4,23 +4,27 @@ import Link from "next/link";
 import { IMovie } from "@/models";
 import genreStyles from "../Genre.module.scss";
 import cardStyles from "./Movie-card.module.scss";
+import { useState } from "react";
 
 interface MovieCardProps {
   movie: IMovie;
 }
 
 const MoviesCard = ({ movie }: MovieCardProps) => {
+  const [isImageFailed, setIsImageFailed] = useState(false);
   const basePath = "/my-project-vk";
+  const fallbackSrc = `${basePath}/images/no-poster.webp`;
 
-   const currentSrc = movie.posterUrl && movie.posterUrl.trim() !== ""
-    ? movie.posterUrl
-    : `${basePath}/images/no-poster.webp`;
+  const currentSrc =
+    movie.posterUrl && movie.posterUrl.trim() !== ""
+      ? movie.posterUrl
+      : fallbackSrc;
 
   return (
     <Link
       href={`/movie/${movie.id}/`}
       className={genreStyles["genre__movie-item"]}
-      prefetch={true}
+      prefetch={false}
     >
       <div className={cardStyles["movie__card"]}>
         <Image
@@ -32,11 +36,9 @@ const MoviesCard = ({ movie }: MovieCardProps) => {
           style={{ width: "100%", height: "auto", objectFit: "cover" }}
           className={cardStyles["movie__card-image"]}
           unoptimized
-         onError={(e) => {
-            const target = e.currentTarget;
-            const fallbackSrc = `${basePath}/images/no-poster.webp`;
-            if (target.src !== fallbackSrc) {
-              target.src = fallbackSrc;
+          onError={() => {
+            if (!isImageFailed) {
+              setIsImageFailed(true);
             }
           }}
         />

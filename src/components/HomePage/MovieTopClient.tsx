@@ -1,23 +1,16 @@
 "use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react"; 
 import "swiper/css";
 import "swiper/css/free-mode";
 import { IMovie } from "@/models";
-import LoaderPage from "../LoaderPage/LoaderPage";
 
 export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  //  Оставляем только фильмы с уникальными id
+  // Оставляем только фильмы с уникальными id
   const uniqueMovies = useMemo(() => {
     const seen = new Set();
     return movies.filter((movie) => {
@@ -27,7 +20,7 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
     });
   }, [movies]);
 
-    const fallbackSrc = "/my-project-vk/images/no-poster.webp";
+  const fallbackSrc = "/my-project-vk/images/no-poster.webp";
 
   const renderCard = (movie: IMovie, index: number) => (
     <Link
@@ -39,11 +32,7 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
       <span className="movie-top__number">{index + 1}</span>
       <div className="movie-top__image">
         <Image
-          src={
-            movie.posterUrl?.trim()
-              ? movie.posterUrl
-              : fallbackSrc
-          }
+          src={movie.posterUrl?.trim() ? movie.posterUrl : fallbackSrc}
           alt={movie.title || "Постер"}
           unoptimized
           width={224}
@@ -55,38 +44,25 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
         />
       </div>
     </Link>
-    
   );
 
-   if (!mounted) {
-    return (
-      <div className="movie-top__ssr-placeholder" style={{ opacity: 0, height: '336px' }}>
-        <LoaderPage />
-      </div>
-    );
-  }
+ 
   return (
     <>
       <div className="movie-top__mobile-only">
-        {mounted ? (
-          <Swiper
-            modules={[FreeMode]}
-            freeMode={true}
-            slidesPerView="auto"
-            spaceBetween={40}
-            className="movie-top__swiper"
-          >
-            {uniqueMovies.slice(0, 10).map((movie, index) => (
-              <SwiperSlide key={movie.id}>
-                {renderCard(movie, index)}
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        ) : (
-          <div className="movie-top__ssr-placeholder">
-            {uniqueMovies.slice(0, 10).map(renderCard)}
-          </div>
-        )}
+        <Swiper
+          modules={[FreeMode]}
+          freeMode={true}
+          slidesPerView="auto"
+          spaceBetween={40}
+          className="movie-top__swiper"
+        >
+          {uniqueMovies.slice(0, 10).map((movie, index) => (
+            <SwiperSlide key={movie.id}>
+              {renderCard(movie, index)}
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
       <div className="movie-top__desktop-only">
@@ -99,8 +75,6 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
     </>
   );
 }
-
-
 // "use client";
 // import { Swiper, SwiperSlide } from "swiper/react";
 // import { FreeMode } from "swiper/modules";
@@ -113,7 +87,7 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
 
 // export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
 //   const [mounted, setMounted] = useState(false);
-  
+
 //   // 1. Добавляем стейт для отслеживания сломанных картинок (по их id)
 //   const [failedImages, setFailedImages] = useState<Record<string | number, boolean>>({});
 
@@ -121,7 +95,6 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
 //     setMounted(true);
 //     // eslint-disable-next-line react-hooks/exhaustive-deps
 //   }, []);
-
 
 //   // Оставляем только фильмы с уникальными id
 //   const uniqueMovies = useMemo(() => {
@@ -139,7 +112,7 @@ export default function MovieTopClient({ movies }: { movies: IMovie[] }) {
 //     // 2. Проверяем, падала ли уже картинка для этого фильма
 //     const isImageFailed = failedImages[movie.id];
 //     const hasValidPoster = movie.posterUrl?.trim();
-    
+
 //     // Если постер изначально пустой ИЛИ картинка уже выдала ошибку — ставим заглушку
 //     const currentSrc = (hasValidPoster && !isImageFailed) ? movie.posterUrl! : fallbackSrc;
 

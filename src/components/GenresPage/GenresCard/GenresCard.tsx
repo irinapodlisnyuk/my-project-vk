@@ -28,6 +28,7 @@ export default function GenresCard({
       : `${BASE_URL}${backdropUrl}`
     : `${BASE_URL}/images/${genreKey.toLowerCase()}.png`;
 
+ 
   const [isImageFailed, setIsImageFailed] = useState(false);
   const [currentSrc, setCurrentSrc] = useState(imageSrc);
   const [prevImageSrc, setPrevImageSrc] = useState(imageSrc);
@@ -39,7 +40,6 @@ export default function GenresCard({
   }
 
   const fallbackSrc = "/my-project-vk/images/no-poster.webp";
-
   return (
     <Link
       href={`/genres/${encodeURIComponent(genreUrlParam)}/`}

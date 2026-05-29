@@ -5,9 +5,14 @@ import { fetchSearchMovies, clearSearch } from "@/slice/movieSlice";
 import { AppDispatch } from "@/store/store";
 import { Button, Input, InputRef } from "antd";
 import { Icon } from "@/models/Icon";
-import { SearchResults } from "../SearchResults/SearchResults";
+import dynamic from "next/dynamic";
 import './Custom_search.scss';
 import './Search.scss';
+
+const SearchResults = dynamic(
+  () => import("../SearchResults/SearchResults").then((mod) => mod.SearchResults),
+  { ssr: false }
+);
 
 interface SearchFormProps {
   onClose?: () => void;
