@@ -5,6 +5,7 @@ import { IMovie } from "@/models";
 import genreStyles from "../Genre.module.scss";
 import cardStyles from "./Movie-card.module.scss";
 import { useState } from "react";
+import { BASE_URL } from "@/api/config";
 
 interface MovieCardProps {
   movie: IMovie;
@@ -12,14 +13,19 @@ interface MovieCardProps {
 
 const MoviesCard = ({ movie }: MovieCardProps) => {
   const [isImageFailed, setIsImageFailed] = useState(false);
-  const basePath = "/my-project-vk";
-  const fallbackSrc = `${basePath}/images/no-poster.webp`;
+  const fallbackSrc = "/my-project-vk/images/no-poster.webp";
 
-  const currentSrc =
-    movie.posterUrl && movie.posterUrl.trim() !== ""
-      ? movie.posterUrl
-      : fallbackSrc;
+  const getPosterUrl = () => {
+    if (!movie.posterUrl || movie.posterUrl.trim() === "") return fallbackSrc;
 
+    if (movie.posterUrl.startsWith("http")) return movie.posterUrl;
+
+    if (movie.posterUrl.startsWith("/")) return `${BASE_URL}${movie.posterUrl}`;
+
+    return `${BASE_URL}/${movie.posterUrl}`;
+  };
+
+  const currentSrc = isImageFailed ? fallbackSrc : getPosterUrl();
   return (
     <Link
       href={`/movie/${movie.id}/`}

@@ -8,15 +8,16 @@ export default function RedirectHandler() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const query = window.location.search;
-      // Проверяем, пришли ли мы со страницы public/404.html
-      if (query && query.indexOf("p=") > -1) {
-        const match = query.match(/p=([^&]*)/);
-        if (match && match[1]) {
-          const decodePath = decodeURIComponent(match[1]).replace(/~and~/g, "&");
-          // Мгновенно перенаправляем внутренний роутер Next.js на нужный фильм
-          router.replace(`/${decodePath}`);
-        }
+      const urlParams = new URLSearchParams(window.location.search);
+      const targetPath = urlParams.get("p"); // Ищем строго значение параметра "p"
+
+      if (targetPath) {
+        const decodePath = decodeURIComponent(targetPath).replace(
+          /~and~/g,
+          "&",
+        );
+
+        router.replace(`/${decodePath}`);
       }
     }
   }, [router]);

@@ -6,6 +6,7 @@ import DeleteFavorite from "./DeleteFavorite";
 import { User } from "@/api/User";
 import "./Favorite__card.scss";
 import { useState } from "react";
+import { BASE_URL } from "@/api/config";
 
 interface FavoriteCardProps {
   movie: IMovie;
@@ -14,16 +15,17 @@ interface FavoriteCardProps {
 }
 
 export const FavoriteCard = ({ movie, priority, user }: FavoriteCardProps) => {
-   const [isImageFailed, setIsImageFailed] = useState(false);
-   const basePath = "/my-project-vk";
-   const fallbackSrc = `${basePath}/images/no-poster.webp`;
- 
-   const currentSrc =
-     movie.posterUrl && movie.posterUrl.trim() !== ""
-       ? movie.posterUrl
-       : fallbackSrc;
- 
-       
+  const [isImageFailed, setIsImageFailed] = useState(false);
+  const fallbackSrc = "/my-project-vk/images/no-poster.webp";
+
+  const getPosterUrl = () => {
+    if (!movie.posterUrl || movie.posterUrl.trim() === "") return fallbackSrc;
+    if (movie.posterUrl.startsWith("http")) return movie.posterUrl;
+    if (movie.posterUrl.startsWith("/")) return `${BASE_URL}${movie.posterUrl}`;
+    return `${BASE_URL}/${movie.posterUrl}`;
+  };
+
+  const currentSrc = isImageFailed ? fallbackSrc : getPosterUrl();
   return (
     <Link
       href={`/movie/${movie.id}/`}
@@ -40,7 +42,7 @@ export const FavoriteCard = ({ movie, priority, user }: FavoriteCardProps) => {
           unoptimized
           style={{ width: "100%", height: "auto", objectFit: "cover" }}
           className="favorite__card-image"
-        onError={() => {
+          onError={() => {
             if (!isImageFailed) {
               setIsImageFailed(true);
             }
