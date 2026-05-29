@@ -99,7 +99,7 @@ export const searchMovies = async (title: string): Promise<Movies> => {
 export async function getAllMovieIds(): Promise<string[]> {
   try {
     const [resMovies, resTop, resRandom] = await Promise.all([
-      fetch(`${BASE_URL}/movie?language=ru`),
+      fetch(`${BASE_URL}/movie??limit=200&language=ru`),
       fetch(`${BASE_URL}/movie/top10?language=ru`),
       fetch(`${BASE_URL}/movie/random?language=ru`).catch(() => null),
     ]);
