@@ -8,15 +8,19 @@ import localFont from "next/font/local";
 const playFont = localFont({
   src: [
     { path: "../../public/fonts/play.woff2", weight: "400", style: "normal" },
-    { path: "../../public/fonts/play-bold.woff2", weight: "700", style: "normal" },
+    {
+      path: "../../public/fonts/play-bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
   ],
-   variable: "--font-play",
+  variable: "--font-play",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   icons: {
-    icon:  "/favicon.svg",
+    icon: "/favicon.svg",
   },
   title: "VK Маруся — Смотреть фильмы онлайн",
   description: "Кинотеатр VK Маруся: топ 10 фильмов, жанры и удобный поиск",
@@ -41,4 +45,3 @@ export default function RootLayout({
     </html>
   );
 }
-
