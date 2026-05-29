@@ -10,8 +10,14 @@ export const LogoutButton = () => {
   const logoutMutation = useMutation({
     mutationFn: logoutUser,
     onSuccess: () => {
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("token");
+      }
+
+      queryClient.removeQueries({ queryKey: ["users", "me"] });
+
       queryClient.setQueryData(["users", "me"], null);
-      queryClient.invalidateQueries({ queryKey: ["users", "me"] });
+      //queryClient.invalidateQueries({ queryKey: ["users", "me"] });
 
       router.push("/");
     },
