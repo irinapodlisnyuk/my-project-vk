@@ -1,20 +1,25 @@
-import { use } from "react";
-import MovieClient from "./MovieClient";
+import { getAllMovieIds, getMovieId } from "@/api/MovieApi";
+import MoviePage from "@/components/MoviePage/MoviePage";
+import { notFound } from "next/navigation";
 
-interface Props {
-  params: Promise<{ id: string }>;
-}
-
-export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  return [{ id: "1" }];
+  const ids = await getAllMovieIds();
+  return ids.map((id) => ({
+    id: String(id),
+  }));
 }
 
-export default function MoviePageRow({ params }: Props) {
-  const { id } = use(params);
 
-  return <MovieClient id={id} />;
+export default async function Movie({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const movie = await getMovieId(id);
+
+  if (!movie) {
+    notFound();
+  }
+
+  return <MoviePage movie={movie} movieId={id} />;
 }
 
 // interface Props {
