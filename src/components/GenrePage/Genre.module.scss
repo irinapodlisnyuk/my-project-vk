@@ -84,9 +84,6 @@
     flex-wrap: wrap;
     gap: 64px 40px;
     width: 100%;
-    max-width: 224px;
-    height: auto;
-    min-height: 336px;
 
     @include vp-767 {
       gap: 24px;
