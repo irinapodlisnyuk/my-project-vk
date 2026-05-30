@@ -16,7 +16,7 @@ interface FavoriteCardProps {
 
 export const FavoriteCard = ({ movie, priority, user }: FavoriteCardProps) => {
   const [isImageFailed, setIsImageFailed] = useState(false);
-  const fallbackSrc = "/my-project-vk/images/no-poster.webp";
+  const fallbackSrc = "/images/no-poster.webp";
 
   const getPosterUrl = () => {
     if (!movie.posterUrl || movie.posterUrl.trim() === "") return fallbackSrc;
@@ -28,7 +28,7 @@ export const FavoriteCard = ({ movie, priority, user }: FavoriteCardProps) => {
   const currentSrc = isImageFailed ? fallbackSrc : getPosterUrl();
   return (
     <Link
-      href={`/movie/${movie.id}/`}
+      href={`/movie/${movie.id}`}
       prefetch={true}
       className="favorite__movie-item"
     >

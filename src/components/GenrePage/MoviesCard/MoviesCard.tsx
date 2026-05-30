@@ -13,7 +13,7 @@ interface MovieCardProps {
 
 const MoviesCard = ({ movie }: MovieCardProps) => {
   const [isImageFailed, setIsImageFailed] = useState(false);
-  const fallbackSrc = "/my-project-vk/images/no-poster.webp";
+  const fallbackSrc = "/images/no-poster.webp";
 
   const getPosterUrl = () => {
     if (!movie.posterUrl || movie.posterUrl.trim() === "") return fallbackSrc;
@@ -28,7 +28,7 @@ const MoviesCard = ({ movie }: MovieCardProps) => {
   const currentSrc = isImageFailed ? fallbackSrc : getPosterUrl();
   return (
     <Link
-      href={`/movie/${movie.id}/`}
+      href={`/movie/${movie.id}`}
       className={genreStyles["genre__movie-item"]}
       prefetch={false}
     >

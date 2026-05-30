@@ -25,8 +25,7 @@ export const SearchResults = ({ query, setQuery }: SearchResultsProps) => {
   // Оставляем только стейт для отслеживания сломанных картинок
   const [failedImages, setFailedImages] = useState<Record<string | number, boolean>>({});
 
-  const basePath = "/my-project-vk";
-  const fallbackSrc = `${basePath}/images/no-poster.webp`;
+  const fallbackSrc = "/images/no-poster.webp";
 
   const handleReset = () => {
     setQuery("");
@@ -42,7 +41,7 @@ export const SearchResults = ({ query, setQuery }: SearchResultsProps) => {
 
     return (
       <Link
-        href={`/movie/${movie.id}/`}
+        href={`/movie/${movie.id}`}
         className="search__results-link"
         onClick={() => {
           setQuery("");

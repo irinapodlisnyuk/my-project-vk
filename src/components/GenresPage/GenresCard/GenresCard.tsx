@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "../Genres.scss";
 import "./Genre__card.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface GenreProps {
   name: string;
@@ -39,10 +39,11 @@ export default function GenresCard({
     setCurrentSrc(imageSrc);
   }
 
-  const fallbackSrc = "/my-project-vk/images/no-poster.webp";
+  const fallbackSrc = "/images/no-poster.webp";
+
   return (
     <Link
-      href={`/genres/${encodeURIComponent(genreUrlParam)}/`}
+      href={`/genres/${genreUrlParam}`}
       className="genre__link"
       prefetch={false}
     >

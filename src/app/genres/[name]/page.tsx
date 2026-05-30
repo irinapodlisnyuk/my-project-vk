@@ -5,7 +5,6 @@ import Link from "next/link";
 import genreStyles from '../../../components/GenrePage/Genre.module.scss'
 import { getGenres } from "@/api/GenresApi";
 
-export const dynamicParams = false;
 
 export async function generateStaticParams() {
   try {
@@ -28,8 +27,7 @@ export default async function GenrePage({
 }) {
   const { name } = await params;
   
-  // Декодируем и приводим к нижнему регистру, чтобы правильно сопоставить ключ с GENRE_MAP
-  const genreKey = decodeURIComponent(name).toLowerCase();
+ const genreKey = decodeURIComponent(name).toLowerCase();
   const russianName = GENRE_MAP[genreKey.replace(/[\s-]/g, "")] || genreKey;
 
   return (
@@ -47,8 +45,7 @@ export default async function GenrePage({
             </Link>
           </div>
 
-          {/* Компонент фильтрации подхватит params, распарсит его на клиенте и отрендерит фильмы */}
-          <MovieFilter params={params} />
+         <MovieFilter params={params} />
         </div>
       </div>
     </section>
