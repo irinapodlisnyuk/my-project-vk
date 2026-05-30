@@ -15,9 +15,9 @@
     flex-direction: column;
     gap: 64px;
 
-    // &.ant-flex {
-    //   display: grid;
-    // }
+    &.ant-flex {
+      display: grid;
+    }
 
     @include vp-767 {
       gap: 40px;
