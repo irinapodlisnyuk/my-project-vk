@@ -28,7 +28,7 @@ interface Props {
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const ids = await getAllMovieIds(); // Вызываем получение всех ID, которые мы настроили в API
+  const ids = await getAllMovieIds();
   return ids.map((id) => ({
     id: String(id), 
   }));
