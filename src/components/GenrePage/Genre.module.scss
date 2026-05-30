@@ -15,9 +15,9 @@
     flex-direction: column;
     gap: 64px;
 
-    &.ant-flex {
-      display: grid;
-    }
+    // &.ant-flex {
+    //   display: grid;
+    // }
 
     @include vp-767 {
       gap: 40px;
@@ -83,13 +83,14 @@
   }
 
   &__movies-list {
-    &.ant-flex,
-    &.ant-row {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-    }
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    // &.ant-flex,
+    // &.ant-row {
+    //   display: grid;
+    //   grid-template-columns: repeat(5, 1fr);
+    // }
+    // display: grid;
+    // grid-template-columns: repeat(5, 1fr);
+    display: flex;
     gap: 64px 40px;
     width: 100%;
 
