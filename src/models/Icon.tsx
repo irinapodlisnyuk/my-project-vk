@@ -1,4 +1,3 @@
-//import sprite from "./src/public/images/sprite.svg";
 
 interface IconProps {
   name: string;
@@ -15,7 +14,7 @@ export const Icon = ({
 }: IconProps) => {
   return (
     <svg className={className} width={width} height={height} aria-hidden="true">
-      <use href={`/my-project-vk/images/sprite.svg#${name}`} />
+      <use href={`/images/sprite.svg#${name}`} />
     </svg>
   );
 };

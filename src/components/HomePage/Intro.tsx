@@ -38,7 +38,7 @@ export const Intro = ({ initialMovie, movieId }: IntroProps) => {
 
           <Image
             className="intro__image"
-            src={movie.backdropUrl || "images/no-poster.webp"}
+            src={movie.backdropUrl || "/images/no-poster.webp"}
             alt={movie.title || "Кино постер"}
             priority
             width={680}
